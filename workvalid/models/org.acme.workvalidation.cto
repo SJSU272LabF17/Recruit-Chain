@@ -1,0 +1,58 @@
+/*
+ * Write your model definitions here
+ */
+
+namespace org.acme.workvalidation
+
+participant Candidate identified by candidateId {
+  o String candidateId
+  o String email
+  o String firstName
+  o String lastName
+  o String address
+  o String passportNumber
+  o String dob
+}
+
+participant Company identified by companyId {
+  o String companyId
+  o String companyName
+  o String companyLocation
+}
+
+asset JobProfile identified by jobId {
+  o String jobId
+  o String role
+  o String skillSet
+  o String joiningDate
+  o String leavingDate
+  o String currEmployment
+  --> Candidate candidate
+  --> Company company
+}
+
+asset BackgroundCheck identified by bcgId {
+  o String bcgId
+  o String criminalRecord
+  o String drivingViolations
+  o String workerscompensationClaimsRecord
+  o String drugTest
+  o String testDate
+  --> Candidate candidate
+  --> Company company
+}
+
+transaction ChangeEmployment {
+  o String currEmployment
+  o String leavingDate
+  --> JobProfile newProfileValue
+}
+
+transaction changeTestDetails {
+  o String criminalRecord
+  o String drivingViolations
+  o String workerscompensationClaimsRecord
+  o String drugTest
+  o String testDate
+  --> BackgroundCheck newCheckValue
+}
