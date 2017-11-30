@@ -49,3 +49,28 @@ function changeTestDetails(changeValue) {
             return assetRegistry.update(asset);
         });
 }
+
+
+/**
+ * Change DrugTestReport transaction
+ * @param {org.acme.workvalidation.changeDrugTestReport} changeValue
+ * @transaction
+ */
+
+function changeDrugTestReport(changeValue) {
+    var assetRegistry;
+    var id = changeValue.newDtRecord.dtrId;
+
+    return getAssetRegistry('org.acme.biznet.DrugTestReport')
+        .then(function(ar) {
+            assetRegistry = ar;
+            return assetRegistry.get(id);
+        })
+        .then(function(asset) {
+            asset.dtrDate = changeValue.dtrDate;
+            asset.dtrType = changeValue.dtrType;
+            asset.dtrResult = changeValue.dtrResult;
+            return assetRegistry.update(asset);
+        });
+}
+
