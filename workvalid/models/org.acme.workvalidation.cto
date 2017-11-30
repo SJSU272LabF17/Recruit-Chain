@@ -20,6 +20,30 @@ participant Company identified by companyId {
   o String companyLocation
 }
 
+participant EduInstitution identified by institutionId {
+  o String institutionId
+  o String institutionName
+  o String institutionLocation
+}
+
+participant DrugTest identified by dtId {
+  o String dtId
+  o String dtName
+  o String dtLocation
+}
+
+participant PoliceVerification identified by pvId {
+  o String pvId
+  o String pvName
+  o String pvLocation
+}
+
+participant Certification identified by certId {
+  o String certId
+  o String certName
+  o String certProvider
+}
+
 asset JobProfile identified by jobId {
   o String jobId
   o String role
@@ -31,15 +55,39 @@ asset JobProfile identified by jobId {
   --> Company company
 }
 
-asset BackgroundCheck identified by bcgId {
-  o String bcgId
-  o String criminalRecord
-  o String drivingViolations
-  o String workerscompensationClaimsRecord
-  o String drugTest
-  o String testDate
+
+asset EducationRecord identified by eduId {
+  o String eduId
+  o String institutionId
+  o String EduLevel
+  o String graduateDate
+  o String grade
   --> Candidate candidate
-  --> Company company
+}
+
+asset Certificate identified by certId {
+  o String certId
+  o String certName
+  o String certProvidedName
+  o String completeDate
+  o String grade
+  --> Candidate candidate
+}
+
+asset DrugTestReport identified by dtrId {
+  o String dtrId
+  o String dtrDate
+  o String dtrType
+  o String dtrResult
+  o String labId
+  --> Candidate candidate
+}
+
+asset PoliceverificationReport identified by pvrId {
+  o String pvrId
+  o String pvrDate
+  o String pvrDetails
+  --> Candidate candidate
 }
 
 transaction ChangeEmployment {
@@ -55,4 +103,26 @@ transaction changeTestDetails {
   o String drugTest
   o String testDate
   --> BackgroundCheck newCheckValue
+}
+
+transaction changeEducationRecords {
+  o String institutionId
+  o String EduLevel
+  o String graduateDate
+  o String grade
+  --> EducationRecord newEduRecord
+}
+
+transaction changeDrugTestReport {
+  o String dtrDate
+  o String dtrType
+  o String dtrResult
+  o String labId
+  --> DrugTestReport newDtRecord
+}
+
+transaction changePoliceverificationReport {
+  o String pvrDate
+  o String pvrDetails
+  --> PoliceverificationReport newPvRecord
 }
