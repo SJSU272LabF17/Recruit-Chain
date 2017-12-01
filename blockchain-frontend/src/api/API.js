@@ -5,7 +5,7 @@ const headers = {
 };
 
 export const newcandidate = (payload) =>
-    fetch(`${api}/newcandidate`, {
+    fetch(`${api}/Candidate`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -22,7 +22,7 @@ export const newcandidate = (payload) =>
         });
 
 export const newcompany = (payload) =>
-    fetch(`${api}/newcompany`, {
+    fetch(`${api}/Company`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -39,7 +39,7 @@ export const newcompany = (payload) =>
         });
 
 export const newedu = (payload) =>
-    fetch(`${api}/newedu`, {
+    fetch(`${api}/EduInstitution`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -56,7 +56,7 @@ export const newedu = (payload) =>
         });
 
 export const newlab = (payload) =>
-    fetch(`${api}/newlab`, {
+    fetch(`${api}/DrugTestCenter`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -72,8 +72,8 @@ export const newlab = (payload) =>
             return error;
         });
 
-export const newpolice = (payload) =>
-    fetch(`${api}/newpolice`, {
+export const newdept = (payload) =>
+    fetch(`${api}/PoliceVerification`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -89,8 +89,8 @@ export const newpolice = (payload) =>
             return error;
         });
 
-export const newcertification = (payload) =>
-    fetch(`${api}/newcertification`, {
+export const newcertificate = (payload) =>
+    fetch(`${api}/Certification`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -106,7 +106,7 @@ export const newcertification = (payload) =>
             return error;
         });
 
-
+/*
         export const allcompanies = (payload) =>
             fetch(`${api}/Employer`, {
                 method: 'GET',
@@ -123,3 +123,4 @@ export const newcertification = (payload) =>
                     console.log("This is error");
                     return error;
                 });
+*/

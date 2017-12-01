@@ -5,26 +5,29 @@ import ReactDOM from 'react-dom';
 
 class Certification extends Component {
   state={
-    name:'',id:'',
+    provider:'',name:'',id:'',
     message:'',
     listall:[]
   };
-/*
-addCompany = (x) => {
-  var z={
-  "$class": "org.acme.biznet.Employer",
-  "CompanyName": x.companyname,
-  "LocationName": x.companylocation
-};
-API.newcompany(z)
-    .then((output) => {
-        console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
-    });
+
+  addCertificate = (x) => {
+    var z={
+  "$class": "org.acme.workvalidation.Certification",
+  "certId": x.provider+"."+x.name,
+  "certName": x.name,
+  "certProvider": x.provider
 };
 
+  API.newcertificate(z)
+      .then((output) => {
+          //console.log("OUTPUT: "+output.CompanyName);
+          this.setState({message:'Certification added.'});
+          ReactDOM.findDOMNode(this.refs.nm).value = "";
+          ReactDOM.findDOMNode(this.refs.pr).value = "";
+      });
+  };
+
+/*
 componentWillMount(){
   this.setState({companyname:'',companylocation:'',message:''});
  var list=[]
@@ -44,16 +47,22 @@ componentWillMount(){
   <h3>Add Certification</h3>
   <form>
   <div className="form-group row">
+  <div className="col-sm-2 col-md-2 col-lg-2">Provider:</div>
+   <div className="col-sm-10 col-md-10 col-lg-10">
+   <input type="text" ref="pr" onChange={(event)=>{
+                                this.setState({provider: event.target.value});}} /></div>
+  </div>
+
+ <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Name:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="text" ref="fn" onChange={(event)=>{
+   <input type="text" ref="nm" onChange={(event)=>{
                                 this.setState({name: event.target.value});}} /></div>
   </div>
 
-
   <div className="form-group row">
   <div className="col-sm-4 col-md-4 col-lg-4">
-  <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCompany(this.state)}>Submit</button>
+  <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCertificate(this.state)}>Submit</button>
   </div>
   </div>
   </form>
@@ -67,7 +76,7 @@ componentWillMount(){
   <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
 </div>
 <div className="form-group row">
-  <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCompany(this.state)}>Submit</button></div>
+  <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCertificate(this.state)}>Submit</button></div>
     </div>
     </form>
          </div>

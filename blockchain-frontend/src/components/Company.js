@@ -10,13 +10,15 @@ class Company extends Component {
     listall:[]
   };
 
-/*
+
 addCompany = (x) => {
   var z={
-  "$class": "org.acme.biznet.Employer",
-  "CompanyName": x.companyname,
-  "LocationName": x.companylocation
+  "$class": "org.acme.workvalidation.Company",
+  "companyId": x.name,
+  "companyName": x.name,
+  "companyLocation": x.location
 };
+
 API.newcompany(z)
     .then((output) => {
         console.log("OUTPUT: "+output.CompanyName);
@@ -25,7 +27,7 @@ API.newcompany(z)
         ReactDOM.findDOMNode(this.refs.cl).value = "";
     });
 };
-
+/*
 componentWillMount(){
   this.setState({companyname:'',companylocation:'',message:''});
  var list=[]
@@ -47,14 +49,14 @@ componentWillMount(){
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Name:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="text" ref="fn" onChange={(event)=>{
+   <input type="text" ref="cn" onChange={(event)=>{
                                 this.setState({name: event.target.value});}} /></div>
   </div>
 
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Location:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="text" ref="loc" onChange={(event)=>{
+   <input type="text" ref="cl" onChange={(event)=>{
                                 this.setState({location: event.target.value});}} /></div>
   </div>
 

@@ -5,25 +5,36 @@ import ReactDOM from 'react-dom';
 
 class Candidate extends Component {
   state={
-    fname:'',lname:'',email:'',dob:'',passport:'',
+    fname:'',lname:'',email:'',dob:'',passport:'',addr:'',
     message:'',id:''
   };
-/*
-addCompany = (x) => {
-  var z={
-  "$class": "org.acme.biznet.Employer",
-  "CompanyName": x.companyname,
-  "LocationName": x.companylocation
-};
-API.newcompany(z)
-    .then((output) => {
-        console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
-    });
+
+  addCandidate = (x) => {
+    var z={
+  "$class": "org.acme.workvalidation.Candidate",
+  "candidateId": x.fname+"."+x.lname,
+  "email": x.email,
+  "firstName": x.fname,
+  "lastName": x.lname,
+  "address": x.addr,
+  "passportNumber": x.passport,
+  "dob": x.dob
 };
 
+  API.newcandidate(z)
+      .then((output) => {
+          //console.log("OUTPUT: "+output.CompanyName);
+          this.setState({message:'Candidate added.'});
+          ReactDOM.findDOMNode(this.refs.fn).value = "";
+          ReactDOM.findDOMNode(this.refs.ln).value = "";
+          ReactDOM.findDOMNode(this.refs.dob).value = "";
+          ReactDOM.findDOMNode(this.refs.em).value = "";
+          ReactDOM.findDOMNode(this.refs.prt).value = "";
+          ReactDOM.findDOMNode(this.refs.adr).value = "";
+      });
+  };
+
+/*
 componentWillMount(){
   this.setState({companyname:'',companylocation:'',message:''});
  var list=[]
@@ -78,8 +89,15 @@ componentWillMount(){
   </div>
 
   <div className="form-group row">
+  <div className="col-sm-2 col-md-2 col-lg-2">Address:</div>
+   <div className="col-sm-10 col-md-10 col-lg-10">
+   <input type="text" ref="adr" onChange={(event)=>{
+                                this.setState({addr: event.target.value});}} /></div>
+  </div>
+
+  <div className="form-group row">
   <div className="col-sm-4 col-md-4 col-lg-4">
-  <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCompany(this.state)}>Submit</button>
+  <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCandidate(this.state)}>Submit</button>
   </div>
   </div>
   </form>
@@ -93,7 +111,7 @@ componentWillMount(){
   <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
 </div>
 <div className="form-group row">
-  <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCompany(this.state)}>Submit</button></div>
+  <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCandidate(this.state)}>Submit</button></div>
     </div>
     </form>
 

@@ -18,7 +18,7 @@ class Home extends Component {
       <div>
 
             <div className="btitle col-sm-12 col-md-12 col-lg-12">
-            <h1 className="w3-text-white" style={{margin:"25px", fontWeight:"bold"}}>Employee Validation</h1>
+            <h1 className="w3-text-white" style={{margin:"25px", fontWeight:"bold"}}>Employee Verification</h1>
             </div>
             <br/><br/><br/><br/><br/>
 
