@@ -25,31 +25,6 @@ function ChangeEmployment(changeEmploymentValue) {
         });
 }
 
-/**
- * Change Background Check transaction
- * @param {org.acme.workvalidation.changeTestDetails} changeValue
- * @transaction
- */
-
-function changeTestDetails(changeValue) {
-    var assetRegistry;
-    var id = changeValue.newCheckValue.bcgId;
-
-    return getAssetRegistry('org.acme.workvalidation.BackgroundCheck')
-        .then(function(ar) {
-            assetRegistry = ar;
-            return assetRegistry.get(id);
-        })
-        .then(function(asset) {
-            asset.criminalRecord = changeValue.criminalRecord;
-            asset.drivingViolations = changeValue.drivingViolations;
-            asset.workerscompensationClaimsRecord = changeValue.workerscompensationClaimsRecord;
-            asset.drugTest = changeValue.drugTest;
-            asset.testDate = changeValue.testDate;
-            return assetRegistry.update(asset);
-        });
-}
-
 
 /**
  * Change DrugTestReport transaction
@@ -70,6 +45,78 @@ function changeDrugTestReport(changeValue) {
             asset.dtrDate = changeValue.dtrDate;
             asset.dtrType = changeValue.dtrType;
             asset.dtrResult = changeValue.dtrResult;
+            return assetRegistry.update(asset);
+        });
+}
+
+
+
+/**
+ * Change Education transaction
+ * @param {org.acme.workvalidation.changeEducationRecords} changeValue
+ * @transaction
+ */
+
+function changeEducationRecords(changeValue) {
+    var assetRegistry;
+    var id = changeValue.newEduRecord.eduId;
+
+    return getAssetRegistry('org.acme.workvalidation.EducationRecord')
+        .then(function(ar) {
+            assetRegistry = ar;
+            return assetRegistry.get(id);
+        })
+        .then(function(asset) {
+            asset.institutionId = changeValue.institutionId;
+            asset.EduLevel = changeValue.EduLevel;
+            asset.institutionId = changeValue.institutionId;
+            asset.EduLevel = changeValue.EduLevel;
+            return assetRegistry.update(asset);
+        });
+}
+
+/**
+ * Change Police Verification transaction
+ * @param {org.acme.workvalidation.changePoliceverificationReport} changeValue
+ * @transaction
+ */
+
+function changePoliceverificationReport(changeValue) {
+    var assetRegistry;
+    var id = changeValue.newPvRecord.pvrId;
+
+    return getAssetRegistry('org.acme.workvalidation.PoliceverificationReport')
+        .then(function(ar) {
+            assetRegistry = ar;
+            return assetRegistry.get(id);
+        })
+        .then(function(asset) {
+            asset.pvrDate = changeValue.pvrDate;
+            asset.pvrDetails = changeValue.pvrDetails;
+            return assetRegistry.update(asset);
+        });
+}
+
+/**
+ * Change Police Verification transaction
+ * @param {org.acme.workvalidation.changeCertificate} changeValue
+ * @transaction
+ */
+
+function changeCertificate(changeValue) {
+    var assetRegistry;
+    var id = changeValue.newCertificate.certId;
+
+    return getAssetRegistry('org.acme.workvalidation.Certificate')
+        .then(function(ar) {
+            assetRegistry = ar;
+            return assetRegistry.get(id);
+        })
+        .then(function(asset) {
+            asset.certName = changeValue.certName;
+            asset.certProvidedName = changeValue.certProvidedName;
+            asset.completeDate = changeValue.completeDate;
+            asset.grade = changeValue.grade;
             return assetRegistry.update(asset);
         });
 }
