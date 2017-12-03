@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Route, Link,Switch } from 'react-router-dom';
 import * as API from '../api/API';
+import * as APInode from '../api/APInode';
 import ReactDOM from 'react-dom';
 
 class Candidate extends Component {
@@ -51,7 +52,7 @@ componentWillMount(){
     render() {
         return (
           <div className="w3-container w3-panel">
-  <h3>Sign up</h3>
+  <h3>Sign up - New Candidate</h3>
   <form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">First Name:</div>
@@ -109,20 +110,6 @@ componentWillMount(){
   </div>
   </form>
 <font color="red">{this.state.message}</font>
-
-
-
-<br/>
-  <h3>View Candidate History</h3>
-  <form>
-  <div className="form-group row">
-  <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
-</div>
-<div className="form-group row">
-  <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCandidate(this.state)}>Submit</button></div>
-    </div>
-    </form>
 
          </div>
         );

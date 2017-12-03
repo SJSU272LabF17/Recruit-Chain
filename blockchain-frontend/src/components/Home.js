@@ -4,19 +4,25 @@ import ReactDOM from 'react-dom';
 import { Route, Link,Switch } from 'react-router-dom';
 import Candidate from './Candidate';
 import Company from './Company';
-import CompanyHome from './CompanyHome';
-import CandidateHome from './CandidateHome';
 import EducationInst from './EducationInst';
 import Testlab from './Testlab';
 import Policedept from './Policedept';
 import Certification from './Certification';
+
+import CompanyHome from './CompanyHome';
+import CandidateHome from './CandidateHome';
+import TestlabHome from './TestlabHome';
+import EduHome from './EduInstHome';
+import PolicedeptHome from './PolicedeptHome';
+import CertificationHome from './CertificationHome';
+
 import * as APInode from '../api/APInode';
 import 'w3-css/w3.css';
 import '../styles.css';
 
 class Home extends Component {
 
-state={visible:false,visible1:false,usertype:''}
+state={visible:false,visible1:false,usertype:'',isLogged:true}
 
 checkUser = (x) => {
   var u={username:x.username,password:x.password};
@@ -54,9 +60,7 @@ APInode.checkUser(u)
             <button onClick={() => this.showDiv2()}>SIGN UP</button>
 
 {this.state.visible ?
-(<div>
-{this.isLogged ?
-(<form>
+(this.state.isLogged ? (<form>
 <div className="form-group row">
 <div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
  <div className="col-sm-10 col-md-10 col-lg-10">
@@ -72,10 +76,13 @@ APInode.checkUser(u)
 <button type="button" className="w3-button w3-dark-grey" onClick={() => this.checkUser(this.state)}>Submit</button>
 </div>
 </div>
-</form>) : ({this.state.usertype===1 ? (<CompanyHome />) : (null)}
-)}
-
-</div>): null}
+</form>):(this.state.usertype===1 ?
+  (<CompanyHome />):((this.state.usertype===2 ?
+    (<EduHome />):((this.state.usertype===3 ?
+      (<TestlabHome />):((this.state.usertype===4 ?
+        (<PolicedeptHome />):((this.state.usertype===5 ?
+          (<CertificationHome />):((this.state.usertype===6 ?
+            (<CandidateHome />):(null))))))))))))): null}
 
 {this.state.visible1 ?
 (

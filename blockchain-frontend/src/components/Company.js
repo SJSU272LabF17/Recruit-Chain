@@ -38,7 +38,7 @@ APInode.newUser(u)
     render() {
         return (
           <div className="w3-container w3-panel">
-    <h3>Sign up</h3>
+    <h3>Sign up - New Company</h3>
   <form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Name:</div>
