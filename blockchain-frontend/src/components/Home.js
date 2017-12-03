@@ -12,6 +12,21 @@ import 'w3-css/w3.css';
 import '../styles.css';
 
 class Home extends Component {
+  
+  handleUpload = (event) => {
+    const payload=new FormData();
+    payload.append('card',event.target.files[0]);
+      API.add(payload)
+          .then((output) => {
+              if (output === 1) {
+                this.setState({uploadstatus: 'File uploaded.'});
+                  console.log("File uploaded" );
+              } else {
+                this.setState({uploadstatus: 'File not uploaded.'});
+                  console.log("File not uploaded");
+              }
+          });
+  };
 
   render() {
     return (
@@ -44,6 +59,8 @@ class Home extends Component {
       <Route exact path="/certification" component={() => <Certification/>}/>
       <Route exact path="/candidate" component={() => <Candidate/>}/>
       </Switch>
+    
+      <input id="newfile" type="file" name="newfile" onChange={this.handleUpload} />
 
      </div>
 
