@@ -4,6 +4,8 @@
 
 namespace org.acme.workvalid
 
+/* Participant as a candidate */
+
 participant Candidate identified by candidateId {
   o String candidateId
   o String email
@@ -14,11 +16,15 @@ participant Candidate identified by candidateId {
   o String dob
 }
 
+/* Participant as a company */
+
 participant Company identified by companyId {
   o String companyId
   o String companyName
   o String companyLocation
 }
+
+/* Participant as an EduInstitution */
 
 participant EduInstitution identified by institutionId {
   o String institutionId
@@ -26,11 +32,15 @@ participant EduInstitution identified by institutionId {
   o String institutionLocation
 }
 
+/* Participant as DrugTestCenter */
+
 participant DrugTestCenter identified by dtcId {
   o String dtcId
   o String dtcName
   o String dtcLocation
 }
+
+/* Participant as PoliceVerification */
 
 participant PoliceVerification identified by pvId {
   o String pvId
@@ -38,11 +48,14 @@ participant PoliceVerification identified by pvId {
   o String pvLocation
 }
 
+/* Participant as a Certification */
+
 participant Certification identified by certId {
-  o String certId
-  o String certName
+  o String certProviderId
   o String certProvider
 }
+
+/* Asset as JobProfile */
 
 asset JobProfile identified by jobId {
   o String jobId
@@ -55,34 +68,29 @@ asset JobProfile identified by jobId {
   --> Company company
 }
 
-asset BackgroundCheck identified by bcgId {
-  o String bcgId
-  o String criminalRecord
-  o String drivingViolations
-  o String workerscompensationClaimsRecord
-  o String drugTest
-  o String testDate
-  --> Candidate candidate
-  --> Company company
-}
+/* Asset as EducationRecord */
 
 asset EducationRecord identified by eduId {
   o String eduId
-  o String institutionId
   o String EduLevel
   o String graduateDate
   o String grade
   --> Candidate candidate
+  --> EduInstitution edu
 }
+
+/* Asset as Certificate */
 
 asset Certificate identified by certId {
   o String certId
   o String certName
-  o String certProvidedName
   o String completeDate
   o String grade
   --> Candidate candidate
+  --> Certification certProvider
 }
+
+/* Asset as DrugTestReport */
 
 asset DrugTestReport identified by dtrId {
   o String dtrId
@@ -93,45 +101,52 @@ asset DrugTestReport identified by dtrId {
   --> DrugTestCenter dtc
 }
 
+/* Asset as PoliceverificationReport */
+
 asset PoliceverificationReport identified by pvrId {
   o String pvrId
   o String pvrDate
   o String pvrDetails
   --> Candidate candidate
+  --> PoliceVerification policeVer
 }
+
+/* Transaction as Employment Change */
 
 transaction ChangeEmployment {
   o String currEmployment
   o String leavingDate
-  --> JobProfile newProfileValue
+  --> JobProfile ProfileValue
 }
 
-transaction changeTestDetails {
-  o String criminalRecord
-  o String drivingViolations
-  o String workerscompensationClaimsRecord
-  o String drugTest
-  o String testDate
-  --> BackgroundCheck newCheckValue
-}
+/* Transaction as Education Change */
 
-transaction changeEducationRecords {
-  o String institutionId
-  o String EduLevel
+transaction ChangeEducationRecords {
   o String graduateDate
   o String grade
   --> EducationRecord newEduRecord
 }
 
-transaction changeDrugTestReport {
+/* Transaction as Drug Test */
+
+transaction ChangeDrugTestReport {
   o String dtrDate
-  o String dtrType
   o String dtrResult
   --> DrugTestReport newDtRecord
 }
 
-transaction changePoliceverificationReport {
+/* Transaction as Police Report */
+
+transaction ChangePoliceverificationReport {
   o String pvrDate
   o String pvrDetails
   --> PoliceverificationReport newPvRecord
+}
+
+/* Transaction as Certificate */
+
+transaction ChangeCertificate {
+  o String pvrDate
+  o String pvrDetails
+  --> Certificate certi
 }
