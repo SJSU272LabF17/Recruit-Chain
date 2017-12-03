@@ -5,23 +5,41 @@ import ReactDOM from 'react-dom';
 
 class Certification extends Component {
   state={
-    provider:'',name:'',id:'',
-    message:'',
+    provider:'',name:'',id:'',cname:'',pname:'',candidateid:'',
+    message:'',message1:'',username:'',password:'',
     listall:[]
   };
 
-  addCertificate = (x) => {
+  addCertification = (x) => {
     var z={
   "$class": "org.acme.workvalidation.Certification",
   "certId": x.provider+"."+x.name,
   "certName": x.name,
   "certProvider": x.provider
 };
-
   API.newcertificate(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Certification added.'});
+          ReactDOM.findDOMNode(this.refs.nm).value = "";
+          ReactDOM.findDOMNode(this.refs.pr).value = "";
+      });
+  };
+
+  addCertificate = (x) => {
+    var z={
+  "$class": "org.acme.workvalid.Certificate",
+  "certId": x.pname+"."+x.cname,
+  "certName": x.cname,
+  "certProvidedName": x.pname,
+  "completeDate": "null",
+  "grade": "null",
+  "candidate": x.candidateid
+};
+  API.addCertificate(z)
+      .then((output) => {
+          //console.log("OUTPUT: "+output.CompanyName);
+          this.setState({message1:'Certificate added.'});
           ReactDOM.findDOMNode(this.refs.nm).value = "";
           ReactDOM.findDOMNode(this.refs.pr).value = "";
       });
@@ -44,7 +62,7 @@ componentWillMount(){
     render() {
         return (
           <div className="w3-container w3-panel">
-  <h3>Add Certification</h3>
+    <h3>Sign up</h3>
   <form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Provider:</div>
@@ -61,12 +79,72 @@ componentWillMount(){
   </div>
 
   <div className="form-group row">
+  <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
+   <div className="col-sm-10 col-md-10 col-lg-10">
+   <input type="password" ref="ln" onChange={(event)=>{
+                                this.setState({password: event.target.value});}} /></div>
+  </div>
+
+  <div className="form-group row">
   <div className="col-sm-4 col-md-4 col-lg-4">
-  <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCertificate(this.state)}>Submit</button>
+  <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCertification(this.state)}>Submit</button>
   </div>
   </div>
   </form>
 <font color="red">{this.state.message}</font>
+
+<h3>Login</h3>
+<form>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="fn" onChange={(event)=>{
+                              this.setState({username: event.target.value});}} /></div></div>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="password" ref="ln" onChange={(event)=>{
+                              this.setState({password: event.target.value});}} /></div></div>
+<div className="form-group row">
+<div className="col-sm-4 col-md-4 col-lg-4">
+<button type="button" className="w3-button w3-dark-grey" onClick={() => this.checkUser(this.state)}>Submit</button>
+</div>
+</div>
+</form>
+
+
+<h3>Add Certificate</h3>
+<form>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Provider:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="pr" onChange={(event)=>{
+                              this.setState({cname: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Name:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="nm" onChange={(event)=>{
+                              this.setState({pname: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Candidate:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="nm" onChange={(event)=>{
+                              this.setState({candidateid: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-4 col-md-4 col-lg-4">
+<button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCertificate(this.state)}>Submit</button>
+</div>
+</div>
+</form>
+<font color="red">{this.state.message1}</font>
+
+
 
 <br/>
   <h3>View Candidate History</h3>

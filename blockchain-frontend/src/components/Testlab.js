@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom';
 
 class Testlab extends Component {
   state={
-    name:'',location:'',id:'',
-    message:'',
-    listall:[]
+    name:'',location:'',id:'',candidateid:'',
+    message:'',message1:'',labid:'',date:'',
+    listall:[],type:'',username:'',password:''
   };
 
   addLab = (x) => {
@@ -22,6 +22,27 @@ class Testlab extends Component {
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Comapny added.'});
+          ReactDOM.findDOMNode(this.refs.nm).value = "";
+          ReactDOM.findDOMNode(this.refs.loc).value = "";
+      });
+  };
+
+
+  addReport = (x) => {
+    var z=  {
+        "$class": "org.acme.workvalid.DrugTestReport",
+        "dtrId": x.labid+"."+x.candidateid,
+        "dtrDate": x.date,
+        "dtrType": x.type,
+        "dtrResult": "null",
+        "candidate": x.candidateid,
+        "dtc": x.labid
+      };
+
+  API.addDrugReport(z)
+      .then((output) => {
+          //console.log("OUTPUT: "+output.CompanyName);
+          this.setState({message1:'Report added.'});
           ReactDOM.findDOMNode(this.refs.nm).value = "";
           ReactDOM.findDOMNode(this.refs.loc).value = "";
       });
@@ -44,7 +65,7 @@ componentWillMount(){
     render() {
         return (
           <div className="w3-container w3-panel">
-  <h3>Add Lab</h3>
+  <h3>Sign up</h3>
   <form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Name:</div>
@@ -61,12 +82,77 @@ componentWillMount(){
   </div>
 
   <div className="form-group row">
+  <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
+   <div className="col-sm-10 col-md-10 col-lg-10">
+   <input type="password" ref="ln" onChange={(event)=>{
+                                this.setState({password: event.target.value});}} /></div>
+  </div>
+
+  <div className="form-group row">
   <div className="col-sm-4 col-md-4 col-lg-4">
   <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addLab(this.state)}>Submit</button>
   </div>
   </div>
   </form>
 <font color="red">{this.state.message}</font>
+
+<h3>Login</h3>
+<form>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="fn" onChange={(event)=>{
+                              this.setState({username: event.target.value});}} /></div></div>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="password" ref="ln" onChange={(event)=>{
+                              this.setState({password: event.target.value});}} /></div></div>
+<div className="form-group row">
+<div className="col-sm-4 col-md-4 col-lg-4">
+<button type="button" className="w3-button w3-dark-grey" onClick={() => this.checkUser(this.state)}>Submit</button>
+</div>
+</div>
+</form>
+
+<h3>Add Report</h3>
+<form>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Date:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="nm" onChange={(event)=>{
+                              this.setState({date: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Type:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="loc" onChange={(event)=>{
+                              this.setState({type: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Candidate ID:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="loc" onChange={(event)=>{
+                              this.setState({candidateid: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Lab ID:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="loc" onChange={(event)=>{
+                              this.setState({labid: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-4 col-md-4 col-lg-4">
+<button type="button" className="w3-button w3-dark-grey" onClick={() => this.addReport(this.state)}>Submit</button>
+</div>
+</div>
+</form>
+<font color="red">{this.state.message1}</font>
+
 
 <br/>
   <h3>View Candidate History</h3>

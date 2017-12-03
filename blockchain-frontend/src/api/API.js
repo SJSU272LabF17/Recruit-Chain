@@ -125,19 +125,89 @@ export const newcertificate = (payload) =>
                 });
 */
 
-export const add = (payload) =>
-                    fetch(`${api}/wallet/import?name=`+"myfile", {
-                        method: 'POST',
-                        headers: {
-                            ...headers,
-                            'Content-Type': 'multipart/form-data'
-                        },
-                        body: payload
-                    }).then(res=>res.json())
-                    .then(res => {
-                        return res;
-                    })
-                        .catch(error => {
-                            console.log("This is error");
-                            return error;
-                        });
+export const newjob = (payload) =>
+    fetch(`${api}/JobProfile`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res => {
+        return res;
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+        export const addPoliceReport = (payload) =>
+            fetch(`${api}/PoliceverificationReport`, {
+                method: 'POST',
+                headers: {
+                    ...headers,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(res=>res.json())
+            .then(res => {
+                return res;
+            })
+                .catch(error => {
+                    console.log("This is error");
+                    return error;
+                });
+
+
+
+        export const addCertificate = (payload) =>
+            fetch(`${api}/Certificate`, {
+                method: 'POST',
+                headers: {
+                    ...headers,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(res=>res.json())
+            .then(res => {
+                return res;
+            })
+                .catch(error => {
+                    console.log("This is error");
+                    return error;
+                });
+
+        export const addDrugReport = (payload) =>
+            fetch(`${api}/DrugTestReport`, {
+                method: 'POST',
+                headers: {
+                    ...headers,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(res=>res.json())
+            .then(res => {
+                return res;
+            })
+                .catch(error => {
+                    console.log("This is error");
+                    return error;
+                });
+
+        export const addEduReport = (payload) =>
+            fetch(`${api}/EducationRecord`, {
+                method: 'POST',
+                headers: {
+                    ...headers,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(res=>res.json())
+            .then(res => {
+                return res;
+            })
+                .catch(error => {
+                    console.log("This is error");
+                    return error;
+                });

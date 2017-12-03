@@ -6,7 +6,8 @@ import ReactDOM from 'react-dom';
 class Company extends Component {
   state={
     name:'',location:'',id:'',
-    message:'',
+    message:'',username:'',password:'',
+    message1:'',
     listall:[]
   };
 
@@ -20,6 +21,28 @@ addCompany = (x) => {
 };
 
 API.newcompany(z)
+    .then((output) => {
+        console.log("OUTPUT: "+output.CompanyName);
+        this.setState({message:'Comapny added.'});
+        ReactDOM.findDOMNode(this.refs.cn).value = "";
+        ReactDOM.findDOMNode(this.refs.cl).value = "";
+    });
+};
+
+addJobProfile = (x) => {
+  var z={
+  "$class": "org.acme.workvalid.JobProfile",
+  "jobId": x.candidateid+"."+x.companyid,
+  "role": x.role,
+  "skillSet": x.skills,
+  "joiningDate": x.joining,
+  "leavingDate": "null",
+  "currEmployment": "yes",
+  "candidate": x.candidateid,
+  "company": x.companyid
+};
+
+API.newjob(z)
     .then((output) => {
         console.log("OUTPUT: "+output.CompanyName);
         this.setState({message:'Comapny added.'});
@@ -44,7 +67,7 @@ componentWillMount(){
     render() {
         return (
           <div className="w3-container w3-panel">
-  <h3>Add Company</h3>
+  <h3>Sign up</h3>
   <form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Name:</div>
@@ -61,12 +84,86 @@ componentWillMount(){
   </div>
 
   <div className="form-group row">
+  <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
+   <div className="col-sm-10 col-md-10 col-lg-10">
+   <input type="password" ref="ln" onChange={(event)=>{
+                                this.setState({password: event.target.value});}} /></div>
+  </div>
+
+  <div className="form-group row">
   <div className="col-sm-4 col-md-4 col-lg-4">
   <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCompany(this.state)}>Submit</button>
   </div>
   </div>
   </form>
 <font color="red">{this.state.message}</font>
+
+<h3>Login</h3>
+<form>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="fn" onChange={(event)=>{
+                              this.setState({username: event.target.value});}} /></div></div>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="password" ref="ln" onChange={(event)=>{
+                              this.setState({password: event.target.value});}} /></div></div>
+<div className="form-group row">
+<div className="col-sm-4 col-md-4 col-lg-4">
+<button type="button" className="w3-button w3-dark-grey" onClick={() => this.checkUser(this.state)}>Submit</button>
+</div>
+</div>
+</form>
+
+
+<h3>Add Job Profile</h3>
+<form>
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Role:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="role" onChange={(event)=>{
+                              this.setState({role: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Skills:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="sk" onChange={(event)=>{
+                              this.setState({skills: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Joining Date:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="join" onChange={(event)=>{
+                              this.setState({joining: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Candidate:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="can" onChange={(event)=>{
+                              this.setState({candidateid: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Company:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="comp" onChange={(event)=>{
+                              this.setState({companyid: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
+<div className="col-sm-4 col-md-4 col-lg-4">
+<button type="button" className="w3-button w3-dark-grey" onClick={() => this.addJobProfile(this.state)}>Submit</button>
+</div>
+</div>
+</form>
+<font color="red">{this.state.message1}</font>
+
+
 
 <br/>
   <h3>View Candidate History</h3>
