@@ -94,24 +94,6 @@ componentWillMount(){
   </form>
 <font color="red">{this.state.message}</font>
 
-<h3>Login</h3>
-<form>
-<div className="form-group row">
-<div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
- <div className="col-sm-10 col-md-10 col-lg-10">
- <input type="text" ref="fn" onChange={(event)=>{
-                              this.setState({username: event.target.value});}} /></div></div>
-<div className="form-group row">
-<div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
- <div className="col-sm-10 col-md-10 col-lg-10">
- <input type="password" ref="ln" onChange={(event)=>{
-                              this.setState({password: event.target.value});}} /></div></div>
-<div className="form-group row">
-<div className="col-sm-4 col-md-4 col-lg-4">
-<button type="button" className="w3-button w3-dark-grey" onClick={() => this.checkUser(this.state)}>Submit</button>
-</div>
-</div>
-</form>
 
 
 <h3>Add Education Recoed</h3>
