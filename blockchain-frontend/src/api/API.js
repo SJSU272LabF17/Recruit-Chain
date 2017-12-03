@@ -124,3 +124,20 @@ export const newcertificate = (payload) =>
                     return error;
                 });
 */
+
+export const add = (payload) =>
+                    fetch(`${api}/wallet/import?name=`+"myfile", {
+                        method: 'POST',
+                        headers: {
+                            ...headers,
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        body: payload
+                    }).then(res=>res.json())
+                    .then(res => {
+                        return res;
+                    })
+                        .catch(error => {
+                            console.log("This is error");
+                            return error;
+                        });
