@@ -1,0 +1,6 @@
+query selectTransactions {
+  description: "Select all transaction"
+  statement:
+      SELECT org.acme.workvalid.JobProfile
+      WHERE (candidate=="resource:org.acme.workvalid.Candidate#ritika.chadha" AND company=="resource:org.acme.workvalid.Company#Del")
+}
