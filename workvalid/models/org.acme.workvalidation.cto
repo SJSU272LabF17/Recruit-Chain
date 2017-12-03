@@ -50,7 +50,7 @@ participant PoliceVerification identified by pvId {
 
 /* Participant as a Certification */
 
-participant Certification identified by certId {
+participant Certification identified by certProviderId {
   o String certProviderId
   o String certProvider
 }

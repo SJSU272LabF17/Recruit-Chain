@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 class Policedept extends Component {
   state={
 name:'',location:'',candidateid:'',date:'',details:'',
-    message:'',message1:'',username:'',password:'',
+    message:'',message1:'',username:'',password:'',policeid:'',
     listall:[]
   };
 
@@ -35,6 +35,7 @@ name:'',location:'',candidateid:'',date:'',details:'',
   "candidate": x.candidateid,
   "policeVer":x.policeid
 };
+
   API.addPoliceReport(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
@@ -136,8 +137,15 @@ name:'',location:'',candidateid:'',date:'',details:'',
 </div>
 
 <div className="form-group row">
+<div className="col-sm-2 col-md-2 col-lg-2">Police Dept:</div>
+ <div className="col-sm-10 col-md-10 col-lg-10">
+ <input type="text" ref="loc" onChange={(event)=>{
+                              this.setState({policeid: event.target.value});}} /></div>
+</div>
+
+<div className="form-group row">
 <div className="col-sm-4 col-md-4 col-lg-4">
-<button type="button" className="w3-button w3-dark-grey" onClick={() => this.addDept(this.state)}>Submit</button>
+<button type="button" className="w3-button w3-dark-grey" onClick={() => this.addRecord(this.state)}>Submit</button>
 </div>
 </div>
 </form>
