@@ -2,7 +2,7 @@
  * Write your model definitions here
  */
 
-namespace org.acme.workvalidation
+namespace org.acme.workvalid
 
 participant Candidate identified by candidateId {
   o String candidateId
