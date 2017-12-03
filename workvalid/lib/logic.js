@@ -11,9 +11,9 @@
 
 function ChangeEmployment(changeEmploymentValue) {
     var assetRegistry;
-    var id = changeEmploymentValue.newProfileValue.jobId;
+    var id = changeEmploymentValue.ProfileValue.jobId;
 
-    return getAssetRegistry('org.acme.workvalidation.JobProfile')
+    return getAssetRegistry('org.acme.workvalid.JobProfile')
         .then(function(ar) {
             assetRegistry = ar;
             return assetRegistry.get(id);
@@ -26,97 +26,92 @@ function ChangeEmployment(changeEmploymentValue) {
 }
 
 
-// /**
-//  * Change DrugTestReport transaction
-//  * @param {org.acme.workvalidation.changeDrugTestReport} changeValue
-//  * @transaction
-//  */
-//
-// function changeDrugTestReport(changeValue) {
-//     var assetRegistry;
-//     var id = changeValue.newDtRecord.dtrId;
-//
-//     return getAssetRegistry('org.acme.biznet.DrugTestReport')
-//         .then(function(ar) {
-//             assetRegistry = ar;
-//             return assetRegistry.get(id);
-//         })
-//         .then(function(asset) {
-//             asset.dtrDate = changeValue.dtrDate;
-//             asset.dtrType = changeValue.dtrType;
-//             asset.dtrResult = changeValue.dtrResult;
-//             return assetRegistry.update(asset);
-//         });
-// }
-//
-//
-//
-// /**
-//  * Change Education transaction
-//  * @param {org.acme.workvalidation.changeEducationRecords} changeValue
-//  * @transaction
-//  */
-//
-// function changeEducationRecords(changeValue) {
-//     var assetRegistry;
-//     var id = changeValue.newEduRecord.eduId;
-//
-//     return getAssetRegistry('org.acme.workvalidation.EducationRecord')
-//         .then(function(ar) {
-//             assetRegistry = ar;
-//             return assetRegistry.get(id);
-//         })
-//         .then(function(asset) {
-//             asset.institutionId = changeValue.institutionId;
-//             asset.EduLevel = changeValue.EduLevel;
-//             asset.institutionId = changeValue.institutionId;
-//             asset.EduLevel = changeValue.EduLevel;
-//             return assetRegistry.update(asset);
-//         });
-// }
-//
-// /**
-//  * Change Police Verification transaction
-//  * @param {org.acme.workvalidation.changePoliceverificationReport} changeValue
-//  * @transaction
-//  */
-//
-// function changePoliceverificationReport(changeValue) {
-//     var assetRegistry;
-//     var id = changeValue.newPvRecord.pvrId;
-//
-//     return getAssetRegistry('org.acme.workvalidation.PoliceverificationReport')
-//         .then(function(ar) {
-//             assetRegistry = ar;
-//             return assetRegistry.get(id);
-//         })
-//         .then(function(asset) {
-//             asset.pvrDate = changeValue.pvrDate;
-//             asset.pvrDetails = changeValue.pvrDetails;
-//             return assetRegistry.update(asset);
-//         });
-// }
-//
-// /**
-//  * Change Police Verification transaction
-//  * @param {org.acme.workvalidation.changeCertificate} changeValue
-//  * @transaction
-//  */
-//
-// function changeCertificate(changeValue) {
-//     var assetRegistry;
-//     var id = changeValue.newCertificate.certId;
-//
-//     return getAssetRegistry('org.acme.workvalidation.Certificate')
-//         .then(function(ar) {
-//             assetRegistry = ar;
-//             return assetRegistry.get(id);
-//         })
-//         .then(function(asset) {
-//             asset.certName = changeValue.certName;
-//             asset.certProvidedName = changeValue.certProvidedName;
-//             asset.completeDate = changeValue.completeDate;
-//             asset.grade = changeValue.grade;
-//             return assetRegistry.update(asset);
-//         });
-// }
+/**
+ * Change Education transaction
+ * @param {org.acme.workvalid.ChangeEducationRecords} changeValue
+ * @transaction
+ */
+
+function changeEducationRecords(changeValue) {
+    var assetRegistry;
+    var id = changeValue.newEduRecord.eduId;
+
+    return getAssetRegistry('org.acme.workvalid.EducationRecord')
+        .then(function(ar) {
+            assetRegistry = ar;
+            return assetRegistry.get(id);
+        })
+        .then(function(asset) {
+            asset.graduateDate = changeValue.graduateDate;
+            asset.grade = changeValue.grade;
+            return assetRegistry.update(asset);
+        });
+}
+
+
+/**
+ * Change DrugTestReport transaction
+ * @param {org.acme.workvalid.ChangeDrugTestReport} changeValue
+ * @transaction
+ */
+
+function ChangeDrugTestReport(changeValue) {
+    var assetRegistry;
+    var id = changeValue.newDtRecord.dtrId;
+
+    return getAssetRegistry('org.acme.workvalid.DrugTestReport')
+        .then(function(ar) {
+            assetRegistry = ar;
+            return assetRegistry.get(id);
+        })
+        .then(function(asset) {
+            asset.dtrDate = changeValue.dtrDate;
+            asset.dtrResult = changeValue.dtrResult;
+            return assetRegistry.update(asset);
+        });
+}
+
+
+/**
+ * Change Police Verification transaction
+ * @param {org.acme.workvalid.ChangePoliceverificationReport} changeValue
+ * @transaction
+ */
+
+function ChangePoliceverificationReport(changeValue) {
+    var assetRegistry;
+    var id = changeValue.newPvRecord.pvrId;
+
+    return getAssetRegistry('org.acme.workvalid.PoliceverificationReport')
+        .then(function(ar) {
+            assetRegistry = ar;
+            return assetRegistry.get(id);
+        })
+        .then(function(asset) {
+            asset.pvrDate = changeValue.pvrDate;
+            asset.pvrDetails = changeValue.pvrDetails;
+            return assetRegistry.update(asset);
+        });
+}
+
+/**
+ * Change Certification Record
+ * @param {org.acme.workvalid.ChangeCertificate} changeValue
+ * @transaction
+ */
+
+function ChangeCertificate(changeValue) {
+    var assetRegistry;
+    var id = changeValue.newCertificate.certId;
+
+    return getAssetRegistry('org.acme.workvalid.Certificate')
+        .then(function(ar) {
+            assetRegistry = ar;
+            return assetRegistry.get(id);
+        })
+        .then(function(asset) {
+            asset.completeDate = changeValue.completeDate;
+            asset.grade = changeValue.grade;
+            return assetRegistry.update(asset);
+        });
+}
