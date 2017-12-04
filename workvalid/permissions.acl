@@ -17,3 +17,12 @@ rule Company_JobProfileAllAccess {
     condition: (v.company.getIdentifier() == m.getIdentifier())
     action: ALLOW
 }
+
+//Employer Will Have only the READ Access of the Candidate's other Details
+rule Company_Candidates_OtherDetails_Access {
+    description: "Employer Will Have only the READ Access of the Candidate's other Details"
+    participant: "org.acme.workvalid.Company"
+    operation: READ
+    resource: "org.acme.workvalid.**"
+    action: ALLOW
+}
