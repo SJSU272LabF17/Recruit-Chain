@@ -46,3 +46,13 @@ rule PoliceVerification_Access {
     condition:(v.policeVer.getIdentifier() == m.getIdentifier())
     action: ALLOW
 }
+
+//Authorized DrugTestCenter can have all access on the certificates created by them
+rule DrugTestCenter_Access {
+    description: "The DrugTestCenter will have full access to the DrugTestReport created by them"
+    participant(m): "org.acme.workvalid.DrugTestCenter"
+    operation: ALL
+    resource(v): "org.acme.workvalid.DrugTestReport"
+    condition:(v.dtc.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
