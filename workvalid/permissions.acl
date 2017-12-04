@@ -7,3 +7,13 @@ rule CandidateAccess {
     condition: (v.candidate.getIdentifier() == m.getIdentifier())
     action: ALLOW
 }
+
+//Employer Will Have all the Access for the JobProfile Asset created by it.
+rule Company_JobProfileAllAccess {
+    description: "Company can perform any action on the JobProfile Asset created by the Company"
+    participant(m): "org.acme.workvalid.Company"
+    operation: READ,CREATE,UPDATE
+    resource(v): "org.acme.workvalid.JobProfile"
+    condition: (v.company.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
