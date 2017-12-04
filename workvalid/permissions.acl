@@ -66,3 +66,19 @@ rule EduInstitution_Access {
     condition:(v.edu.getIdentifier() == m.getIdentifier())
     action: ALLOW
 }
+
+rule Default {
+    description: "Allow all participants access to all resources"
+    participant: "ANY"
+    operation: ALL
+    resource: "org.acme.workvalid.*"
+    action: ALLOW
+}
+
+rule SystemACL {
+  description:  "System ACL to permit all access"
+  participant: "ANY"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}

@@ -117,15 +117,3 @@ query selectDrugTestReport {
       SELECT org.acme.workvalid.DrugTestReport
       WHERE (candidate== _$candidateID AND dtc== _$dtcId)
 }
-
-//Query to select the PoliceverificationReport details for a Candidate
-/* The parameters from Web application that needs to be passed are for this query are:
-candidate : "resource:org.acme.workvalid.Candidate#candidateId"
-PoliceVerification : "resource:org.acme.workvalid.PoliceVerification#pvId"*/
-
-query selectPoliceVerification {
-  description: "To select details of the candidate's Police records"
-  statement:
-      SELECT org.acme.workvalid.PoliceverificationReport
-      WHERE (candidate== _$candidateID AND policeVer== _$pvId)
-}
