@@ -12,7 +12,7 @@ class Candidate extends Component {
 
   addCandidate = (x) => {
     var z={
-  "$class": "org.acme.workvalidation.Candidate",
+  "$class": "org.acme.workvalid.Candidate",
   "candidateId": x.fname+"."+x.lname,
   "email": x.email,
   "firstName": x.fname,

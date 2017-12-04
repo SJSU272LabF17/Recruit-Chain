@@ -13,7 +13,7 @@ class Certification extends Component {
 
   addCertification = (x) => {
     var z={
-  "$class": "org.acme.workvalidation.Certification",
+  "$class": "org.acme.workvalid.Certification",
   "certId": x.provider+"."+x.name,
   "certName": x.name,
   "certProvider": x.provider

@@ -13,7 +13,7 @@ class EducationInst extends Component {
 
   addEdu = (x) => {
     var z={
-  "$class": "org.acme.workvalidation.EduInstitution",
+  "$class": "org.acme.workvalid.EduInstitution",
   "institutionId": x.name+"."+x.location,
   "institutionName": x.name,
   "institutionLocation": x.location
