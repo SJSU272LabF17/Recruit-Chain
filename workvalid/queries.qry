@@ -3,7 +3,7 @@
 /* The parameters from Web application that needs to be passed are for this query are:
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"*/
 
-query selectJobHistory {
+query viewJobHistory {
   description: "To select the Job History of a candidate"
   statement:
       SELECT org.acme.workvalid.JobProfile
@@ -14,7 +14,7 @@ query selectJobHistory {
 /* The parameters from Web application that needs to be passed are for this query are:
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"*/
 
-query selectEducational_History {
+query viewEdHistory {
   description: "TO select the Educational Background for a candidate"
   statement:
       SELECT org.acme.workvalid.EducationRecord
@@ -25,7 +25,7 @@ query selectEducational_History {
 /* The parameters from Web application that needs to be passed are for this query are:
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"*/
 
-query selectCertifications {
+query viewCertifications {
   description: "To select details of the candidate's certification details"
   statement:
       SELECT org.acme.workvalid.Certificate
@@ -37,10 +37,22 @@ query selectCertifications {
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"
 */
 
-query selectDrugTestReport {
+query viewDrugTestReports {
   description: "To select details of the candidate's DrugTestReport details"
   statement:
       SELECT org.acme.workvalid.DrugTestReport
+      WHERE (candidate== _$candidateID)
+}
+
+//Query to select the Police Details of a Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+*/
+
+query viewPoliceReports {
+  description: "To select details of the candidate's DrugTestReport details"
+  statement:
+      SELECT org.acme.workvalid.PoliceverificationReport
       WHERE (candidate== _$candidateID)
 }
 

@@ -444,3 +444,83 @@ fetch(`${api}/queries/selectDrugTestReport?candidateID=resource%3Aorg.acme.workv
   console.log("This is error");
   return error;
 });
+
+export const viewJobHistory = (payload) =>
+fetch(`${api}/queries/viewJobHistory?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID, {
+  method: 'GET',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  }
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is error");
+  return error;
+});
+
+export const viewEdHistory = (payload) =>
+fetch(`${api}/queries/viewEdHistory?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID, {
+  method: 'GET',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  }
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is error");
+  return error;
+});
+
+export const viewCertifications = (payload) =>
+fetch(`${api}/queries/viewCertifications?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID, {
+  method: 'GET',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  }
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is error");
+  return error;
+});
+
+export const viewDrugTestReports = (payload) =>
+fetch(`${api}/queries/viewDrugTestReports?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID, {
+  method: 'GET',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  }
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is error");
+  return error;
+});
+
+export const viewPoliceReports = (payload) =>
+fetch(`${api}/queries/viewPoliceReports?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID, {
+  method: 'GET',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  }
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is error");
+  return error;
+});
