@@ -211,3 +211,172 @@ export const newjob = (payload) =>
                     console.log("This is error");
                     return error;
                 });
+
+        export const changeEmployment = (payload) =>
+              fetch(`${api}/ChangeEmployment`, {
+                  method: 'POST',
+                  headers: {
+                      ...headers,
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(payload)
+                    }).then(res=>res.json())
+                    .then(res => {
+                        return res;
+                    })
+                        .catch(error => {
+                            console.log("This is error");
+                            return error;
+                        });
+
+                        export const changeCertificate = (payload) =>
+                            fetch(`${api}/ChangeCertificate`, {
+                                method: 'POST',
+                                headers: {
+                                    ...headers,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(payload)
+                            }).then(res=>res.json())
+                            .then(res => {
+                                return res;
+                            })
+                                .catch(error => {
+                                    console.log("This is error");
+                                    return error;
+                                });
+
+                                export const changeDrugTestReport = (payload) =>
+                                    fetch(`${api}/ChangeDrugTestReport`, {
+                                        method: 'POST',
+                                        headers: {
+                                            ...headers,
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify(payload)
+                                    }).then(res=>res.json())
+                                    .then(res => {
+                                        return res;
+                                    })
+                                        .catch(error => {
+                                            console.log("This is error");
+                                            return error;
+                                        });
+
+                                        export const changeEducationRecords = (payload) =>
+                                            fetch(`${api}/ChangeEducationRecords`, {
+                                                method: 'POST',
+                                                headers: {
+                                                    ...headers,
+                                                    'Content-Type': 'application/json'
+                                                },
+                                                body: JSON.stringify(payload)
+                                            }).then(res=>res.json())
+                                            .then(res => {
+                                                return res;
+                                            })
+                                                .catch(error => {
+                                                    console.log("This is error");
+                                                    return error;
+                                                });
+
+                                                export const changePoliceverificationReport = (payload) =>
+                                                    fetch(`${api}/ChangePoliceverificationReport`, {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            ...headers,
+                                                            'Content-Type': 'application/json'
+                                                        },
+                                                        body: JSON.stringify(payload)
+                                                    }).then(res=>res.json())
+                                                    .then(res => {
+                                                        return res;
+                                                    })
+                                                        .catch(error => {
+                                                            console.log("This is error");
+                                                            return error;
+                                                        });
+
+                                                        export const viewCandidateCompanyHistory = (payload) =>
+                                                            fetch(`${api}/`, {
+                                                                method: 'POST',
+                                                                headers: {
+                                                                    ...headers,
+                                                                    'Content-Type': 'application/json'
+                                                                },
+                                                                body: JSON.stringify(payload)
+                                                            }).then(res=>res.json())
+                                                            .then(res => {
+                                                                return res;
+                                                            })
+                                                                .catch(error => {
+                                                                    console.log("This is error");
+                                                                    return error;
+                                                                });
+
+                                                                export const viewCandidateCertificationHistory = (payload) =>
+                                                                    fetch(`${api}/`, {
+                                                                        method: 'POST',
+                                                                        headers: {
+                                                                            ...headers,
+                                                                            'Content-Type': 'application/json'
+                                                                        },
+                                                                        body: JSON.stringify(payload)
+                                                                    }).then(res=>res.json())
+                                                                    .then(res => {
+                                                                        return res;
+                                                                    })
+                                                                        .catch(error => {
+                                                                            console.log("This is error");
+                                                                            return error;
+                                                                        });
+
+                                                                        export const viewCandidateEducationHistory = (payload) =>
+                                                                            fetch(`${api}/`, {
+                                                                                method: 'POST',
+                                                                                headers: {
+                                                                                    ...headers,
+                                                                                    'Content-Type': 'application/json'
+                                                                                },
+                                                                                body: JSON.stringify(payload)
+                                                                            }).then(res=>res.json())
+                                                                            .then(res => {
+                                                                                return res;
+                                                                            })
+                                                                                .catch(error => {
+                                                                                    console.log("This is error");
+                                                                                    return error;
+                                                                                });
+
+                                                                                export const viewCandidatePoliceHistory = (payload) =>
+                                                                                    fetch(`${api}/`, {
+                                                                                        method: 'POST',
+                                                                                        headers: {
+                                                                                            ...headers,
+                                                                                            'Content-Type': 'application/json'
+                                                                                        },
+                                                                                        body: JSON.stringify(payload)
+                                                                                    }).then(res=>res.json())
+                                                                                    .then(res => {
+                                                                                        return res;
+                                                                                    })
+                                                                                        .catch(error => {
+                                                                                            console.log("This is error");
+                                                                                            return error;
+                                                                                        });
+                                                                                        export const viewCandidateLabHistory = (payload) =>
+                                                                                            fetch(`${api}/`, {
+                                                                                                method: 'POST',
+                                                                                                headers: {
+                                                                                                    ...headers,
+                                                                                                    'Content-Type': 'application/json'
+                                                                                                },
+                                                                                                body: JSON.stringify(payload)
+                                                                                            }).then(res=>res.json())
+                                                                                            .then(res => {
+                                                                                                return res;
+                                                                                            })
+                                                                                                .catch(error => {
+                                                                                                    console.log("This is error");
+                                                                                                    return error;
+                                                                                                });

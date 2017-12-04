@@ -33,6 +33,20 @@ API.newjob(z)
         ReactDOM.findDOMNode(this.refs.cl).value = "";
     });
 };
+
+viewCandidateLabHistory = (x) => {
+  var z={};
+
+  API.viewCandidateLabHistory(z)
+      .then((output) => {
+          console.log("OUTPUT: "+output.CompanyName);
+          this.setState({message:'View Candidate History'});
+          ReactDOM.findDOMNode(this.refs.cn).value = "";
+          ReactDOM.findDOMNode(this.refs.cl).value = "";
+      });
+
+
+};
 /*
 componentWillMount(){
   this.setState({companyname:'',companylocation:'',message:''});
@@ -94,10 +108,10 @@ componentWillMount(){
             <form>
             <div className="form-group row">
             <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-            <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
+            <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
           </div>
           <div className="form-group row">
-            <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.addLab(this.state)}>Submit</button></div>
+            <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.viewCandidateLabHistory(this.state)}>Submit</button></div>
               </div>
               </form>
          </div>
