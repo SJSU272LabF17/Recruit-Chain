@@ -40,6 +40,9 @@ APInode.checkUser(u)
     });
 };
 
+logout(){
+    this.setState({isLogged:false});
+}
   showDiv1() {
     this.setState({visible: !this.state.visible,visible1:false});
   }
@@ -55,12 +58,19 @@ APInode.checkUser(u)
             <h1 className="w3-text-white" style={{margin:"25px", fontWeight:"bold"}}>Employee Verification</h1>
             </div>
             <br/><br/><br/><br/><br/>
-
-            <button onClick={() => this.showDiv1()}>SIGN IN</button>
-            <button onClick={() => this.showDiv2()}>SIGN UP</button>
+{this.state.isLogged===false ?
+            (<div>
+              <button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.showDiv1()}>SIGN IN</button>
+            <button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.showDiv2()}>SIGN UP</button></div>)
+            : <button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.logout()}>Logout</button>}
 
 {this.state.visible ?
-(this.state.isLogged===false ? (<form>
+(this.state.isLogged===false ? (
+  <div className="w3-container w3-panel  w3-border box">
+  <div className="w3-panel w3-green">
+          <h3>SIGN IN</h3>
+          </div>
+  <form>
 <div className="form-group row">
 <div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
  <div className="col-sm-10 col-md-10 col-lg-10">
@@ -73,10 +83,12 @@ APInode.checkUser(u)
                               this.setState({password: event.target.value});}} /></div></div>
 <div className="form-group row">
 <div className="col-sm-4 col-md-4 col-lg-4">
-<button type="button" className="w3-button w3-dark-grey" onClick={() => this.checkUser(this.state)}>Submit</button>
+<button type="button" className="w3-button w3-green" onClick={() => this.checkUser(this.state)}>Submit</button>
 </div>
 </div>
-</form>):(this.state.usertype==="1" ?
+</form>
+</div>
+):(this.state.usertype==="1" ?
   (<CompanyHome />):((this.state.usertype==="2" ?
     (<EduHome />):((this.state.usertype==="3" ?
       (<TestlabHome />):((this.state.usertype==="4" ?
