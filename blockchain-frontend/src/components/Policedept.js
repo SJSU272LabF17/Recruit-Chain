@@ -23,8 +23,6 @@ var u={username:x.name+"."+x.location, password: x.password, type:4}
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Police dept added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.loc).value = "";
       });
 APInode.newUser(u)
                     .then((output) => {
@@ -32,24 +30,7 @@ APInode.newUser(u)
                     });
   };
 
-  addRecord = (x) => {
-    var z={
-  "$class": "org.acme.workvalid.PoliceverificationReport",
-  "pvrId": x.policeid+"."+x.candidateid,
-  "pvrDate": x.date,
-  "pvrDetails": x.details,
-  "candidate": x.candidateid,
-  "policeVer":x.policeid
-};
 
-  API.addPoliceReport(z)
-      .then((output) => {
-          //console.log("OUTPUT: "+output.CompanyName);
-          this.setState({message1:'Police record added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.loc).value = "";
-      });
-  };
 
 /*componentWillMount(){
   this.setState({companyname:'',companylocation:'',message:''});

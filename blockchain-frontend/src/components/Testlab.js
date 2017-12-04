@@ -33,25 +33,6 @@ var u={username:x.name+"."+x.location, password: x.password, type:3}
   };
 
 
-  addReport = (x) => {
-    var z=  {
-        "$class": "org.acme.workvalid.DrugTestReport",
-        "dtrId": x.labid+"."+x.candidateid,
-        "dtrDate": x.date,
-        "dtrType": x.type,
-        "dtrResult": "null",
-        "candidate": x.candidateid,
-        "dtc": x.labid
-      };
-
-  API.addDrugReport(z)
-      .then((output) => {
-          //console.log("OUTPUT: "+output.CompanyName);
-          this.setState({message1:'Report added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.loc).value = "";
-      });
-  };
 
 /*
 componentWillMount(){

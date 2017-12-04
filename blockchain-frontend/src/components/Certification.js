@@ -14,17 +14,14 @@ class Certification extends Component {
   addCertification = (x) => {
     var z={
   "$class": "org.acme.workvalid.Certification",
-  "certId": x.provider+"."+x.name,
-  "certName": x.name,
+  "certProviderId": x.provider,
   "certProvider": x.provider
 };
-var u={username:x.provider+"."+x.name, password: x.password, type:5}
+var u={username:x.provider, password: x.password, type:5}
 API.newcertificate(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Certification added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.pr).value = "";
       });
 APInode.newUser(u)
                     .then((output) => {
@@ -32,24 +29,7 @@ APInode.newUser(u)
                     });
   };
 
-  addCertificate = (x) => {
-    var z={
-  "$class": "org.acme.workvalid.Certificate",
-  "certId": x.pname+"."+x.cname,
-  "certName": x.cname,
-  "certProvidedName": x.pname,
-  "completeDate": "null",
-  "grade": "null",
-  "candidate": x.candidateid
-};
-  API.addCertificate(z)
-      .then((output) => {
-          //console.log("OUTPUT: "+output.CompanyName);
-          this.setState({message1:'Certificate added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.pr).value = "";
-      });
-  };
+
 
 /*
 componentWillMount(){
@@ -77,12 +57,6 @@ componentWillMount(){
                                 this.setState({provider: event.target.value});}} /></div>
   </div>
 
- <div className="form-group row">
-  <div className="col-sm-2 col-md-2 col-lg-2">Name:</div>
-   <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="text" ref="nm" onChange={(event)=>{
-                                this.setState({name: event.target.value});}} /></div>
-  </div>
 
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>

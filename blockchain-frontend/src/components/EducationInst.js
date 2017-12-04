@@ -33,24 +33,7 @@ APInode.newUser(u)
   };
 
 
-  addRecord = (x) => {
-    var z={
-  "$class": "org.acme.workvalid.EducationRecord",
-  "eduId": x.instid+"."+x.candidateid,
-  "institutionId": x.instid,
-  "EduLevel": x.level,
-  "graduateDate": "null",
-  "grade": "null",
-  "candidate": x.candidateid
-};
-  API.addEduReport(z)
-      .then((output) => {
-          //console.log("OUTPUT: "+output.CompanyName);
-          this.setState({message:'Edu record added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.loc).value = "";
-      });
-  };
+
 
 
     render() {

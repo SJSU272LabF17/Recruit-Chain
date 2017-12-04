@@ -30,22 +30,22 @@ API.newjob(z)
     .then((output) => {
         console.log("OUTPUT: "+output.CompanyName);
         this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
+        // ReactDOM.findDOMNode(this.refs.cn).value = "";
+        // ReactDOM.findDOMNode(this.refs.cl).value = "";
     });
 };
 
 viewCandidateCompanyHistory = (x) => {
   var z={
-    candidateID : x.candidateid,
-    companyId : this.props.user
+    candidateID : 'resource:org.acme.workvalid.Candidate#'+x.candidateid,
+    companyId : 'resource:org.acme.workvalid.Company#'+this.props.user
   };
   API.updateCompanyHistory(z)
       .then((output) => {
           console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'View Candidate History'});
-          ReactDOM.findDOMNode(this.refs.cn).value = "";
-          ReactDOM.findDOMNode(this.refs.cl).value = "";
+          // ReactDOM.findDOMNode(this.refs.cn).value = "";
+          // ReactDOM.findDOMNode(this.refs.cl).value = "";
       });
 
 
@@ -60,8 +60,8 @@ updateCompanyHistory = (x) => {
       .then((output) => {
           console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'View Candidate History'});
-          ReactDOM.findDOMNode(this.refs.cn).value = "";
-          ReactDOM.findDOMNode(this.refs.cl).value = "";
+          // ReactDOM.findDOMNode(this.refs.cn).value = "";
+          // ReactDOM.findDOMNode(this.refs.cl).value = "";
       });
 
 

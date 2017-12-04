@@ -8,44 +8,39 @@ class CertificationHome extends Component {
     name:'',location:'',id:'',
     message:'',username:'',password:'',
     message1:'',
-    listall:[]
+    listall:[],candidateid:''
   };
 
 
 
-addJobProfile = (x) => {
-  var z={
-  "$class": "org.acme.workvalid.JobProfile",
-  "jobId": x.candidateid+"."+x.companyid,
-  "role": x.role,
-  "skillSet": x.skills,
-  "joiningDate": x.joining,
-  "leavingDate": "null",
-  "currEmployment": "yes",
-  "candidate": x.candidateid,
-  "company": x.companyid
+  addCertificate = (x) => {
+    var z={
+  "$class": "org.acme.workvalid.Certificate",
+  "certId": x.pname+"."+x.cname,
+  "certName": x.pname,
+  "certProvider": x.cname,
+  "completeDate": "null",
+  "grade": "null",
+  "candidate": x.candidateid
 };
-API.newjob(z)
-    .then((output) => {
-        console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
-    });
-};
-
-viewCandidateCertificationHistory = (x) => {
-  var z={
-    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid,
-    education_instituteID : "resource:org.acme.workvalid.Certification#"+this.props.user
+  API.addCertificate(z)
+      .then((output) => {
+          //console.log("OUTPUT: "+output.CompanyName);
+          this.setState({message1:'Certificate added.'});
+      });
   };
 
-  API.viewCandidateCertificationHistory(z)
+updateCertificateHistory = (x) => {
+  var z={
+    candidateID : x.candidateid,
+    education_instituteID : this.props.user
+  };
+
+  API.updateCertificateHistory(z)
       .then((output) => {
           console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'View Candidate History'});
-          ReactDOM.findDOMNode(this.refs.cn).value = "";
-          ReactDOM.findDOMNode(this.refs.cl).value = "";
+
       });
 
 
@@ -97,6 +92,17 @@ viewCandidateCertificationHistory = (x) => {
             <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.viewCandidateCertificationHistory(this.state)}>Submit</button></div>
               </div>
               </form>
+
+              <h3>Modify Candidate History</h3>
+              <form>
+              <div className="form-group row">
+              <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
+              <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+            </div>
+            <div className="form-group row">
+              <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updateCertificateHistory(this.state)}>Submit</button></div>
+                </div>
+                </form>
 
          </div>
         );

@@ -8,44 +8,41 @@ class TestlabHome extends Component {
     name:'',location:'',id:'',
     message:'',username:'',password:'',
     message1:'',
-    listall:[]
+    listall:[], candidateid:''
   };
 
 
 
-addJobProfile = (x) => {
-  var z={
-  "$class": "org.acme.workvalid.JobProfile",
-  "jobId": x.candidateid+"."+x.companyid,
-  "role": x.role,
-  "skillSet": x.skills,
-  "joiningDate": x.joining,
-  "leavingDate": "null",
-  "currEmployment": "yes",
-  "candidate": x.candidateid,
-  "company": x.companyid
-};
-API.newjob(z)
-    .then((output) => {
-        console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
-    });
-};
+    addReport = (x) => {
+      var z=  {
+          "$class": "org.acme.workvalid.DrugTestReport",
+          "dtrId": x.labid+"."+x.candidateid,
+          "dtrDate": x.date,
+          "dtrType": x.type,
+          "dtrResult": "null",
+          "candidate": x.candidateid,
+          "dtc": x.labid
+        };
 
-viewCandidateLabHistory = (x) => {
+    API.addDrugReport(z)
+        .then((output) => {
+            //console.log("OUTPUT: "+output.CompanyName);
+            this.setState({message1:'Report added.'});
+            ReactDOM.findDOMNode(this.refs.nm).value = "";
+            ReactDOM.findDOMNode(this.refs.loc).value = "";
+        });
+    };
+
+updateLabHistory = (x) => {
   var z={
-    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid,
-    dtcId : "resource:org.acme.workvalid.DrugTestCenter#"+this.props.user
+    candidateID : x.candidateid,
+    dtcId : this.props.user
   };
 
-  API.viewCandidateLabHistory(z)
+  API.updateLabHistory(z)
       .then((output) => {
           console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'View Candidate History'});
-          ReactDOM.findDOMNode(this.refs.cn).value = "";
-          ReactDOM.findDOMNode(this.refs.cl).value = "";
       });
 
 
@@ -117,7 +114,19 @@ componentWillMount(){
             <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.viewCandidateLabHistory(this.state)}>Submit</button></div>
               </div>
               </form>
-         </div>
+
+
+         <h3>Modify Lab History</h3>
+         <form>
+         <div className="form-group row">
+         <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
+         <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+       </div>
+       <div className="form-group row">
+         <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updateLabHistory(this.state)}>Submit</button></div>
+           </div>
+           </form>
+                    </div>
         );
     }
 }

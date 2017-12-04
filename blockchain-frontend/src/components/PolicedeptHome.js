@@ -8,44 +8,38 @@ class PolicedeptHome extends Component {
     name:'',location:'',id:'',
     message:'',username:'',password:'',
     message1:'',
-    listall:[]
+    listall:[], candidateid:''
   };
 
-
-
-addJobProfile = (x) => {
-  var z={
-  "$class": "org.acme.workvalid.JobProfile",
-  "jobId": x.candidateid+"."+x.companyid,
-  "role": x.role,
-  "skillSet": x.skills,
-  "joiningDate": x.joining,
-  "leavingDate": "null",
-  "currEmployment": "yes",
+  addRecord = (x) => {
+    var z={
+  "$class": "org.acme.workvalid.PoliceverificationReport",
+  "pvrId": x.policeid+"."+x.candidateid,
+  "pvrDate": x.date,
+  "pvrDetails": x.details,
   "candidate": x.candidateid,
-  "company": x.companyid
-};
-API.newjob(z)
-    .then((output) => {
-        console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
-    });
+  "policeVer":x.policeid
 };
 
-viewCandidatePoliceHistory = (x) => {
-  var z={
-    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid,
-    pvId : "resource:org.acme.workvalid.PoliceVerification#"+this.props.user
+  API.addPoliceReport(z)
+      .then((output) => {
+          //console.log("OUTPUT: "+output.CompanyName);
+          this.setState({message1:'Police record added.'});
+          ReactDOM.findDOMNode(this.refs.nm).value = "";
+          ReactDOM.findDOMNode(this.refs.loc).value = "";
+      });
   };
 
-  API.viewCandidatePoliceHistory(z)
+updatePoliceHistory = (x) => {
+  var z={
+    candidateID : x.candidateid,
+    pvId : this.props.user
+  };
+
+  API.updatePoliceHistory(z)
       .then((output) => {
           console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'View Candidate History'});
-          ReactDOM.findDOMNode(this.refs.cn).value = "";
-          ReactDOM.findDOMNode(this.refs.cl).value = "";
       });
 
 
@@ -106,7 +100,20 @@ viewCandidatePoliceHistory = (x) => {
             <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.viewCandidatePoliceHistory(this.state)}>Submit</button></div>
               </div>
               </form>
-         </div>
+
+
+         <h3>Modify Police History</h3>
+         <form>
+         <div className="form-group row">
+         <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
+         <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+       </div>
+       <div className="form-group row">
+         <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updatePoliceHistory(this.state)}>Submit</button></div>
+           </div>
+           </form>
+                  </div>
+
         );
     }
 }

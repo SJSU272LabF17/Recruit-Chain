@@ -366,13 +366,12 @@ export const newjob = (payload) =>
                                                         });
 
 export const updateCompanyHistory = (payload) =>
-fetch('http://localhost:3000/api/queries/selectJobHistory?candidateID=resource%3Aorg.acme.workvalid.Candidate%23'+payload.candidateID+'&companyId=resource%3Aorg.acme.workvalid.Company%23'+payload.companyID, {
-  method: 'POST',
+fetch(`http://localhost:3000/api/queries/selectJobHistory?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID+`&companyId=resource%3Aorg.acme.workvalid.Company%23`+payload.companyId, {
+  method: 'GET',
   headers: {
     ...headers,
     'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(payload)
+  }
   }).then(res=>res.json())
   .then(res => {
     return res;
@@ -382,14 +381,13 @@ fetch('http://localhost:3000/api/queries/selectJobHistory?candidateID=resource%3
     return error;
   });
 
-  export const viewCandidateCertificationHistory = (payload) =>
-  fetch(`${api}/queries/selectCertifications`, {
-    method: 'POST',
+  export const updateCertificateHistory = (payload) =>
+  fetch(`${api}/queries/selectCertifications?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID+`&education_instituteID=resource%3Aorg.acme.workvalid.Certification%23`+payload.education_instituteID, {
+    method: 'GET',
     headers: {
         ...headers,
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
+      }
     }).then(res=>res.json())
     .then(res => {
       return res;
@@ -399,14 +397,13 @@ fetch('http://localhost:3000/api/queries/selectJobHistory?candidateID=resource%3
       return error;
     });
 
-export const viewCandidateEducationHistory = (payload) =>
-fetch(`${api}/queries/selectEducational_Qualification`, {
-  method: 'POST',
+export const updateEducationHistory = (payload) =>
+fetch(`${api}/queries/selectEducational_Qualification?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID+`&education_instituteID=resource%3Aorg.acme.workvalid.EduInstitution%23`+payload.education_instituteID, {
+  method: 'GET',
   headers: {
     ...headers,
     'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(payload)
+  }
 }).then(res=>res.json())
 .then(res => {
     return res;
@@ -416,14 +413,13 @@ fetch(`${api}/queries/selectEducational_Qualification`, {
     return error;
   });
 
-export const viewCandidatePoliceHistory = (payload) =>
-fetch(`${api}/queries/selectPoliceVerification`, {
-  method: 'POST',
+export const updatePoliceHistory = (payload) =>
+fetch(`${api}/queries/selectPoliceVerification?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID+`&pvId=resource%3Aorg.acme.workvalid.PoliceVerification%23`+payload.pvId, {
+  method: 'GET',
   headers: {
     ...headers,
     'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(payload)
+  }
 }).then(res=>res.json())
 .then(res => {
   return res;
@@ -433,33 +429,13 @@ fetch(`${api}/queries/selectPoliceVerification`, {
   return error;
 });
 
-export const viewCandidateLabHistory = (payload) =>
-fetch(`${api}/queries/selectDrugTestReport`, {
-  method: 'POST',
+export const updateLabHistory = (payload) =>
+fetch(`${api}/queries/selectDrugTestReport?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID+`&dtcId=resource%3Aorg.acme.workvalid.DrugTestCenter%23`+payload.dtcId, {
+  method: 'GET',
   headers: {
     ...headers,
     'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(payload)
-}).then(res=>res.json())
-.then(res => {
-  return res;
-})
-.catch(error => {
-  console.log("This is error");
-  return error;
-});
-
-
-
-export const updateCompanyHistory = (payload) =>
-fetch(`${api}/queries/selectDrugTestReport`, {
-  method: 'POST',
-  headers: {
-    ...headers,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(payload)
+  }
 }).then(res=>res.json())
 .then(res => {
   return res;
