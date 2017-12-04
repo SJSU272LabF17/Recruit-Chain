@@ -21,8 +21,8 @@ class Candidate extends Component {
   "passportNumber": x.passport,
   "dob": x.dob
 };
-
-  API.newcandidate(z)
+var u={username:x.fname+"."+x.lname, password: x.password, type:1}
+API.newcandidate(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Candidate added.'});
@@ -33,6 +33,10 @@ class Candidate extends Component {
           ReactDOM.findDOMNode(this.refs.prt).value = "";
           ReactDOM.findDOMNode(this.refs.adr).value = "";
       });
+APInode.newUser(u)
+              .then((output) => {
+                  console.log("OUTPUT: ");
+              });
   };
 
 /*

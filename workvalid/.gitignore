@@ -1,0 +1,7 @@
+node_modules
+data
+.DS_Store
+npm-debug.log
+composer-logs
+networkadmin.card
+*.bna

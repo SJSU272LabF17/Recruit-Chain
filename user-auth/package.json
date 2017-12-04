@@ -1,0 +1,22 @@
+{
+  "name": "user-auth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "serve-favicon": "~2.4.5",
+    "kerberos": "~0.0.17",
+    "mongodb": "~2.2.19",
+    "mongoose": "^4.12.4",
+    "cors": "^2.8.4",
+    "bcrypt": "^1.0.3"
+  }
+}

@@ -18,7 +18,7 @@ class Testlab extends Component {
   "dtcName": x.name,
   "dtcLocation": x.location
 };
-
+var u={username:x.name+"."+x.location, password: x.password, type:1}
   API.newlab(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
@@ -26,6 +26,10 @@ class Testlab extends Component {
           ReactDOM.findDOMNode(this.refs.nm).value = "";
           ReactDOM.findDOMNode(this.refs.loc).value = "";
       });
+      APInode.newUser(u)
+                          .then((output) => {
+                              console.log("OUTPUT: ");
+                          });      
   };
 
 

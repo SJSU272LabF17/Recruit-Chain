@@ -18,13 +18,18 @@ class EducationInst extends Component {
   "institutionName": x.name,
   "institutionLocation": x.location
 };
-  API.newedu(z)
+var u={username:x.name+"."+x.location, password: x.password, type:1}
+API.newedu(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Edu institute added.'});
           ReactDOM.findDOMNode(this.refs.nm).value = "";
           ReactDOM.findDOMNode(this.refs.loc).value = "";
       });
+APInode.newUser(u)
+              .then((output) => {
+                  console.log("OUTPUT: ");
+              });
   };
 
 
