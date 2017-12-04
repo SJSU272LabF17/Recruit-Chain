@@ -146,7 +146,7 @@ transaction ChangePoliceverificationReport {
 /* Transaction as Certificate */
 
 transaction ChangeCertificate {
-  o String pvrDate
-  o String pvrDetails
+  o String completeDate
+  o String grade
   --> Certificate certi
 }
