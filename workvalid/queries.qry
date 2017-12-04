@@ -32,7 +32,7 @@ query selectCertifications {
   description: "To select details of the candidate's certification details"
   statement:
       SELECT org.acme.workvalid.Certificate
-      WHERE (candidate== _$candidateID AND certProvider== _$education_instituteID)
+      WHERE (candidate == _$candidateID AND certProvider == _$education_instituteID)
 }
 
 //Query to select the DrugTestDetails of a Candidate
@@ -47,7 +47,7 @@ query selectDrugTestReport {
       WHERE (candidate== _$candidateID AND dtc== _$dtcId)
 }
 
-//Query to select the Authorized third party Certifications for a Candidate
+//Query to select the PoliceverificationReport details for a Candidate
 /* The parameters from Web application that needs to be passed are for this query are:
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"
 PoliceVerification : "resource:org.acme.workvalid.PoliceVerification#pvId"*/
