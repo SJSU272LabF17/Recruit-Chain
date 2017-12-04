@@ -23,8 +23,6 @@ var u={username:x.name+"."+x.location, password: x.password, type:3}
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Comapny added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.loc).value = "";
       });
       APInode.newUser(u)
                           .then((output) => {

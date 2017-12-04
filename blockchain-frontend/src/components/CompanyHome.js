@@ -16,7 +16,7 @@ class CompanyHome extends Component {
 addJobProfile = (x) => {
   var z={
   "$class": "org.acme.workvalid.JobProfile",
-  "jobId": x.candidateid+"."+x.companyid,
+  "jobId": x.candidateid+"."+x.companyid+Math.floor((Math.random()*20)),
   "role": x.role,
   "skillSet": x.skills,
   "joiningDate": x.joining,

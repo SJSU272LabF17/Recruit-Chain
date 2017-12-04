@@ -15,7 +15,7 @@ class EduInstHome extends Component {
   addRecord = (x) => {
     var z={
   "$class": "org.acme.workvalid.EducationRecord",
-  "eduId": x.instid+"."+x.candidateid,
+  "eduId": x.instid+"."+x.candidateid+Math.floor((Math.random()*20)),
   "institutionId": x.instid,
   "EduLevel": x.level,
   "graduateDate": "null",

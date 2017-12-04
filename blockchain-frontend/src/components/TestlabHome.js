@@ -16,7 +16,7 @@ class TestlabHome extends Component {
     addReport = (x) => {
       var z=  {
           "$class": "org.acme.workvalid.DrugTestReport",
-          "dtrId": x.labid+"."+x.candidateid,
+          "dtrId": x.labid+"."+x.candidateid+Math.floor((Math.random()*20)),
           "dtrDate": x.date,
           "dtrType": x.type,
           "dtrResult": "null",
