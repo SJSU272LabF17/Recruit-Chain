@@ -22,3 +22,15 @@ query selectEducational_Qualification {
       SELECT org.acme.workvalid.EducationRecord
       WHERE (candidate== _$candidateID AND edu== _$education_instituteID)
 }
+
+//Query to select the Authorized third party Certifications for a Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+Certification : "resource:org.acme.workvalid.Certification#certProviderId"*/
+
+query selectCertifications {
+  description: "To select details of the candidate's certification details"
+  statement:
+      SELECT org.acme.workvalid.Certificate
+      WHERE (candidate== _$candidateID AND certProvider== _$education_instituteID)
+}
