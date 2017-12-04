@@ -76,10 +76,15 @@ API.viewEdHistory(z)
           <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
           </div>
           <div className="form-group row">
+<<<<<<< HEAD
           <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(1)}>work</button></div>
           <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.lab(2)}>lab</button></div>
           <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.edu(3)}>edu</button></div>
 
+=======
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(this.state)}>work</button></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.lab(this.state)}>lab</button></div>
+>>>>>>> a84241ebcdf6bdf744addb3ee480396b381d50fe
             </div>
             </form>
          </div>
