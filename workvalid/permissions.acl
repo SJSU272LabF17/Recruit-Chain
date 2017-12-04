@@ -36,3 +36,13 @@ rule CertificationProvider_Access {
     condition:(v.certProvider.getIdentifier() == m.getIdentifier())
     action: ALLOW
 }
+
+//Authorized PoliceVerification can have all access on the certificates created by them
+rule PoliceVerification_Access {
+    description: "The PoliceVerification will have full access to the PoliceverificationReport created by them"
+    participant(m): "org.acme.workvalid.PoliceVerification"
+    operation: ALL
+    resource(v): "org.acme.workvalid.PoliceverificationReport"
+    condition:(v.policeVer.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
