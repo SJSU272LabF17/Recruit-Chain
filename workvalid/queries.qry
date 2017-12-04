@@ -44,6 +44,7 @@ query selectDrugTestReport {
       WHERE (candidate== _$candidateID)
 }
 
+/***********************************************************************************************************************/
 
 //Query to select the PoliceverificationReport details for a Candidate
 /* The parameters from Web application that needs to be passed are for this query are:
@@ -62,7 +63,7 @@ query selectPoliceVerification {
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"
 Company : "resource:org.acme.workvalid.Company#companyId" */
 
-query selectJobHistory_By_CompanyID {
+query selectJobHistory {
   description: "To select the Job History of a candidate"
   statement:
       SELECT org.acme.workvalid.JobProfile
@@ -74,7 +75,7 @@ query selectJobHistory_By_CompanyID {
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"
 edu : "resource:org.acme.workvalid.EduInstitution#Del" */
 
-query selectEduHistory_By_Educational_Institute {
+query selectEducational_Qualification {
   description: "To select the Educational Background for a candidate"
   statement:
       SELECT org.acme.workvalid.EducationRecord
@@ -86,7 +87,7 @@ query selectEduHistory_By_Educational_Institute {
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"
 Certification : "resource:org.acme.workvalid.Certification#certProviderId"*/
 
-query selectCertification_ByCertProvider {
+query selectCertifications {
   description: "To select details of the candidate's certification details"
   statement:
       SELECT org.acme.workvalid.Certificate
@@ -98,7 +99,7 @@ query selectCertification_ByCertProvider {
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"
 DrugTestCenter : "resource:org.acme.workvalid.DrugTestCenter#dtcId"*/
 
-query selectDrugTestReport_By_DTC {
+query selectDrugTestReport {
   description: "To select details of the candidate's DrugTestReport details"
   statement:
       SELECT org.acme.workvalid.DrugTestReport
@@ -110,10 +111,9 @@ query selectDrugTestReport_By_DTC {
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"
 PoliceVerification : "resource:org.acme.workvalid.PoliceVerification#pvId"*/
 
-query selectPoliceVerification_By_PVC {
+query selectPoliceVerification {
   description: "To select details of the candidate's Police records"
   statement:
       SELECT org.acme.workvalid.PoliceverificationReport
       WHERE (candidate== _$candidateID AND policeVer== _$pvId)
 }
-
