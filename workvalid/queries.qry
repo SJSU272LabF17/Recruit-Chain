@@ -35,7 +35,7 @@ query selectCertifications {
       WHERE (candidate== _$candidateID AND certProvider== _$education_instituteID)
 }
 
-//Query to select the Authorized third party Certifications for a Candidate
+//Query to select the DrugTestDetails of a Candidate
 /* The parameters from Web application that needs to be passed are for this query are:
 candidate : "resource:org.acme.workvalid.Candidate#candidateId"
 DrugTestCenter : "resource:org.acme.workvalid.DrugTestCenter#dtcId"*/
@@ -46,3 +46,16 @@ query selectDrugTestReport {
       SELECT org.acme.workvalid.DrugTestReport
       WHERE (candidate== _$candidateID AND dtc== _$dtcId)
 }
+
+//Query to select the Authorized third party Certifications for a Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+PoliceVerification : "resource:org.acme.workvalid.PoliceVerification#pvId"*/
+
+query selectPoliceVerification {
+  description: "To select details of the candidate's Police records"
+  statement:
+      SELECT org.acme.workvalid.PoliceverificationReport
+      WHERE (candidate== _$candidateID AND policeVer== _$pvId)
+}
+
