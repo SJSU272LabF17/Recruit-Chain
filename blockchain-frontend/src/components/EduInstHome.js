@@ -5,12 +5,11 @@ import ReactDOM from 'react-dom';
 
 class EduInstHome extends Component {
   state={
-    name:'',location:'',id:'',
-    message:'',username:'',password:'',
-    message1:'',
-    listall:[], candidateid:''
+    name:'',location:'',id:'',allHistory:[],grade:[],
+    message:'',username:'',password:'',eduid:[],
+    message1:'',candidateID:'',instId:'',gradDate:'',
+    listall:[], candidateid:'',showForm:false
   };
-
 
   addRecord = (x) => {
     var z={
@@ -32,21 +31,41 @@ class EduInstHome extends Component {
       });
   };
 
-updateEducationHistory = (x) => {
-  var z={
-    candidateID : x.candidateid,
-    education_instituteID : this.props.user
+  updateEduHistory = (x) => {
+    var z={
+      candidateID : x.candidateid,
+      education_instituteID : this.props.user
+    };
+    API.updateEducationHistory(z)
+        .then((output) => {
+            this.setState({message:'View Candidate History'});
+
+            var temp=[];
+            this.state.showForm=true;
+            for(var i=0;i<output.length;i++)
+            {
+            temp=this.state.allHistory.concat(output[i]);
+            this.setState({allHistory:temp});
+            }
+        });
   };
 
-  API.updateEducationHistory(z)
-      .then((output) => {
-          console.log("OUTPUT: "+output.CompanyName);
-          this.setState({message:'View Candidate History'});
-      });
-
-
+  updatedData=(d)=>{
+    var z={
+  "$class": "org.acme.workvalid.ChangeEducationRecords",
+  "graduateDate": d.gradDate,
+  "grade": d.grade,
+  "newEduRecord": d.eduid,
+  "transactionId": "",
+  "timestamp": Date.now()
 };
+    API.updateEduRecord(z)
+        .then((output) => {
+            console.log("SUCCESS: ");
+            //this.setState({message:'View Candidate History'});
 
+        });
+  };
 
     render() {
         return (
@@ -107,6 +126,46 @@ updateEducationHistory = (x) => {
                 <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updateEducationHistory(this.state)}>Submit</button></div>
                   </div>
                   </form>
+
+
+
+
+                  <div>
+                        {this.state.allHistory.map(f => {
+                               return ( <div  key={Math.random()}>
+                               <div >
+                               <ul className="w3-ul w3-border w3-right-blue">
+                                      <li>{f.eduId}</li>
+                                      <li>{f.EduLevel}</li>
+                                      <li>{f.skillSet}</li>
+                                      <li>{f.graduateDate}</li>
+                                      <li>{f.grade}</li>
+                                      <li>{f.edu}</li></ul>
+                                        </div>
+                                        </div>
+                                      )
+                    })
+                    }
+                  </div>
+                  {this.state.showForm ? (
+                    <div>
+                    <form>
+                    <div className="form-group row">
+                    <div className="col-sm-2 col-md-2 col-lg-2">Record ID:</div>
+                    <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({eduid: event.target.value});}} /></div>
+                  </div>
+                    <div className="col-sm-2 col-md-2 col-lg-2">Graduation Date:</div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({gradDate: event.target.value});}} /></div>
+
+                    <div className="col-sm-2 col-md-2 col-lg-2">Grade:</div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({grade: event.target.value});}} /></div>
+
+                  <div className="form-group row">
+                    <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updatedData(this.state)}>Submit</button></div>
+                      </div>
+                      </form>
+                    </div>
+                  ) : (null)}
 
 
          </div>

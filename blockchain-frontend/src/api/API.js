@@ -321,3 +321,37 @@ export const updateJobProfile = (payload) =>
             console.log("This is error");
             return error;
         });
+
+        export const updateEduRecord = (payload) =>
+            fetch(`${api}/ChangeEducationRecords`, {
+                method: 'POST',
+                headers: {
+                    ...headers,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(res=>res.json())
+            .then(res => {
+                return res;
+            })
+                .catch(error => {
+                    console.log("This is error");
+                    return error;
+                });
+
+        export const updateTestRecord = (payload) =>
+            fetch(`${api}/ChangeDrugTestReport`, {
+                method: 'POST',
+                headers: {
+                    ...headers,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(res=>res.json())
+            .then(res => {
+                return res;
+            })
+                .catch(error => {
+                    console.log("This is error");
+                    return error;
+                });

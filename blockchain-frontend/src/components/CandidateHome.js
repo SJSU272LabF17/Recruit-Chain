@@ -70,8 +70,6 @@ API.getPolice(z)
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(this.state)}>work</button></div>
           <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.lab(this.state)}>lab</button></div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.certificate(this.state)}>certificate</button></div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.police(this.state)}>police</button></div>
             </div>
             </form>
          </div>
