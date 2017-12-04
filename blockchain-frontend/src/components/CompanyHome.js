@@ -7,8 +7,8 @@ class CompanyHome extends Component {
   state={
     name:'',location:'',id:'',
     message:'',username:'',password:'',newleaving:'',
-    message1:'',newprofileid:'',newemployeed:'',
-    listall:[]
+    message1:'',newprofileid:'',newemployeed:'',showForm:false,
+    allHistory:[]
   };
 
 
@@ -58,10 +58,18 @@ updateCompanyHistory = (x) => {
   };
   API.updateCompanyHistory(z)
       .then((output) => {
-          console.log("OUTPUT: "+output.CompanyName);
+          console.log("OUTPUT: "+output[0].jobId);
           this.setState({message:'View Candidate History'});
           // ReactDOM.findDOMNode(this.refs.cn).value = "";
           // ReactDOM.findDOMNode(this.refs.cl).value = "";
+          var temp=[];
+          this.state.showForm=true;
+          for(var i=0;i<output.length;i++)
+          {
+          temp=this.state.allHistory.concat(output[i]);
+          this.setState({allHistory:temp});
+          }
+
       });
 
 
@@ -74,14 +82,15 @@ updatedData=(d)=>{
   "leavingDate": d.newleaving,
   "ProfileValue": d.newprofileid,
   "transactionId": "",
-  "timestamp": ""
+  "timestamp": Date.now()
 };
   API.updateJobProfile(z)
       .then((output) => {
-          console.log("OUTPUT: "+output.CompanyName);
+          console.log("OUTPUT: ");
           this.setState({message:'View Candidate History'});
           // ReactDOM.findDOMNode(this.refs.cn).value = "";
           // ReactDOM.findDOMNode(this.refs.cl).value = "";
+
       });
 
 };
@@ -195,40 +204,39 @@ componentWillMount(){
       </div>
       </form>
 <div>
-      {this.state.files.allHistory(f => {
-        if(f.folderid===0){
+      {this.state.allHistory.map(f => {
              return ( <div  key={Math.random()}>
              <div >
              <ul className="w3-ul w3-border w3-right-blue">
-                    <li>f.jobId</li>
-                    <li>f.role</li>
-                    <li>f.skillSet</li>
-                    <li>f.joiningDate</li>
-                    <li>f.currEmployment</li></ul>
+                    <li>{f.jobId}</li>
+                    <li>{f.role}</li>
+                    <li>{f.skillSet}</li>
+                    <li>{f.joiningDate}</li>
+                    <li>{f.currEmployment}</li></ul>
                       </div>
                       </div>
-                    )}
+                    )
   })
   }
 </div>
 {this.state.showForm ? (
-  <div>
-  <form>
-  <div className="form-group row">
-  <div className="col-sm-2 col-md-2 col-lg-2">Candidate ID:</div>
-  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newprofileid: event.target.value});}} /></div>
+  <div>
+  <form>
+  <div className="form-group row">
+  <div className="col-sm-2 col-md-2 col-lg-2">Job ID:</div>
+  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newprofileid: event.target.value});}} /></div>
 </div>
-  <div className="col-sm-2 col-md-2 col-lg-2">Employeed Status:</div>
+  <div className="col-sm-2 col-md-2 col-lg-2">Employeed Status:</div>
 <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newemployeed: event.target.value});}} /></div>
-</div>
-  <div className="col-sm-2 col-md-2 col-lg-2">Leaving Date:</div>
+
+  <div className="col-sm-2 col-md-2 col-lg-2">Leaving Date:</div>
 <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newleaving: event.target.value});}} /></div>
-</div>
+
 <div className="form-group row">
-  <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updatedData(this.state)}>Submit</button></div>
-    </div>
-    </form>
-  </div>
+  <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updatedData(this.state)}>Submit</button></div>
+    </div>
+    </form>
+  </div>
 ) : (null)}
 
 
