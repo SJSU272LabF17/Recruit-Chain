@@ -10,3 +10,15 @@ query selectJobHistory {
       SELECT org.acme.workvalid.JobProfile
       WHERE (candidate== _$candidateID AND company== _$companyId)
 }
+
+//Query to select the Educational History for a Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+edu : "resource:org.acme.workvalid.EduInstitution#Del" */
+
+query selectEducational_Qualification {
+  description: "TO select the Educational Background for a candidate"
+  statement:
+      SELECT org.acme.workvalid.EducationRecord
+      WHERE (candidate== _$candidateID AND edu== _$education_instituteID)
+}
