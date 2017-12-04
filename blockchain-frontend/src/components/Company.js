@@ -25,8 +25,8 @@ API.newcompany(z)
     .then((output) => {
         console.log("OUTPUT: "+output.CompanyName);
         this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
+        // ReactDOM.findDOMNode(this.refs.cn).value = "";
+        // ReactDOM.findDOMNode(this.refs.cl).value = "";
     });
 APInode.newUser(u)
         .then((output) => {

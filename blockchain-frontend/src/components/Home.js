@@ -95,7 +95,7 @@ logout(){
               (<CompanyHome user={this.state.loggedUser}/>):((this.state.usertype==="2" ?
               (<EduHome user={this.state.loggedUser}/>):((this.state.usertype==="3" ?
               (<TestlabHome user={this.state.loggedUser}/>):((this.state.usertype==="6" ?
-              (<CandidateHome />):(null))))))))): null}
+              (<CandidateHome user={this.state.loggedUser}/>):(null))))))))): null}
 
 {this.state.visible1 ?
 (

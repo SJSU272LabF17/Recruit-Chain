@@ -8,26 +8,28 @@ class TestlabHome extends Component {
     name:'',location:'',id:'',dtcId:'',
     message:'',username:'',password:'',newresult:'',
     message1:'',candidateID:'',showForm:false,
-    listall:[], newdate:'',allHistory:[],rid:''
+    listall:[], newdate:'',allHistory:[],rid:'',
+    candHistory:[]
   };
 
 
     addReport = (x) => {
       var z=  {
           "$class": "org.acme.workvalid.DrugTestReport",
-          "dtrId": x.labid+"."+x.candidateid+Math.floor((Math.random()*20)),
+          "dtrId": this.props.user+"."+x.candidateid+Math.floor((Math.random()*20)),
           "dtrDate": x.date,
           "dtrType": x.type,
-          "dtrResult": "null",
+          "dtrResult": "Awaiting",
           "candidate": x.candidateid,
-          "dtc": x.labid
+          "dtc": this.props.user,
+          "drugCenterName": x.labname
         };
     API.addDrugReport(z)
         .then((output) => {
             //console.log("OUTPUT: "+output.CompanyName);
             this.setState({message1:'Report added.'});
-            ReactDOM.findDOMNode(this.refs.nm).value = "";
-            ReactDOM.findDOMNode(this.refs.loc).value = "";
+            // ReactDOM.findDOMNode(this.refs.nm).value = "";
+            // ReactDOM.findDOMNode(this.refs.loc).value = "";
         });
     };
 
@@ -52,14 +54,33 @@ class TestlabHome extends Component {
           });
     };
 
+    viewCandidateLabHistory = (x) => {
+      var z={
+        candidateID : x.candidateid
+      };
+      API.viewDrugTestReports(z)
+          .then((output) => {
+              console.log("OUTPUT: "+output);
+              this.setState({message:'View Candidate History'});
+              // ReactDOM.findDOMNode(this.refs.cn).value = "";
+              // ReactDOM.findDOMNode(this.refs.cl).value = "";
+              var temp=[];
+              for(var i=0;i<output.length;i++)
+              {
+              temp=this.state.candHistory.concat(output[i]);
+              this.setState({candHistory:temp});
+              }
+          });
+    };
+
     updatedData=(d)=>{
       var z={
   "$class": "org.acme.workvalid.ChangeDrugTestReport",
   "dtrDate": d.newdate,
   "dtrResult": d.newresult,
   "newDtRecord": d.rid,
-  "transactionId": "string",
-  "timestamp": "2017-12-04T16:55:13.490Z"
+  "transactionId": "",
+  "timestamp": Date.now()
 };
       API.updateTestRecord(z)
           .then((output) => {
@@ -97,10 +118,10 @@ class TestlabHome extends Component {
           </div>
 
           <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2">Lab ID:</div>
+          <div className="col-sm-2 col-md-2 col-lg-2">Lab Name:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
            <input type="text" ref="loc" onChange={(event)=>{
-                                        this.setState({labid: event.target.value});}} /></div>
+                                        this.setState({labname: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
@@ -124,6 +145,21 @@ class TestlabHome extends Component {
               </div>
               </form>
 
+              {this.state.candHistory.map(f => {
+                     return ( <div  key={Math.random()}>
+                     <div >
+                     <ul className="w3-ul w3-border w3-right-blue">
+                            <li>{f.dtrId}</li>
+                            <li>{f.dtrDate}</li>
+                            <li>{f.dtrType}</li>
+                            <li>{f.dtrResult}</li>
+                            <li>{f.drugCenterName}</li></ul>
+                              </div>
+                              </div>
+                            )
+          })
+          }
+
 
          <h3>Modify Lab History</h3>
          <form>
@@ -145,7 +181,7 @@ class TestlabHome extends Component {
                                <li>{f.dtrDate}</li>
                                <li>{f.dtrType}</li>
                                <li>{f.dtrResult}</li>
-                               <li>{f.candidate}</li>
+                               <li>{f.drugCenterName}</li>
                         </ul>
                                  </div>
                                  </div>

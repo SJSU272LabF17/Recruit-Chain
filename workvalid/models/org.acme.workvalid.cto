@@ -64,6 +64,7 @@ asset JobProfile identified by jobId {
   o String joiningDate
   o String leavingDate
   o String currEmployment
+  o String companyName
   --> Candidate candidate
   --> Company company
 }
@@ -75,6 +76,7 @@ asset EducationRecord identified by eduId {
   o String EduLevel
   o String graduateDate
   o String grade
+  o String eduName
   --> Candidate candidate
   --> EduInstitution edu
 }
@@ -97,6 +99,7 @@ asset DrugTestReport identified by dtrId {
   o String dtrDate
   o String dtrType
   o String dtrResult
+  o String drugCenterName
   --> Candidate candidate
   --> DrugTestCenter dtc
 }

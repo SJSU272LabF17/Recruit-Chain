@@ -8,19 +8,20 @@ class EduInstHome extends Component {
     name:'',location:'',id:'',allHistory:[],grade:[],
     message:'',username:'',password:'',eduid:[],
     message1:'',candidateID:'',instId:'',gradDate:'',
-    listall:[], candidateid:'',showForm:false
+    listall:[], candidateid:'',showForm:false,
+    candHistory:[]
   };
 
   addRecord = (x) => {
     var z={
   "$class": "org.acme.workvalid.EducationRecord",
-  "eduId": x.instid+"."+x.candidateid+Math.floor((Math.random()*20)),
-  "institutionId": x.instid,
+  "eduId":this.props.user+"."+x.candidateid+Math.floor((Math.random()*20)),
   "EduLevel": x.level,
-  "graduateDate": "null",
-  "grade": "null",
+  "graduateDate": "N/A",
+  "grade": "N/A",
   "candidate": x.candidateid,
-  "edu":x.instid
+  "edu":this.props.user,
+  "eduName": x.eduname
 };
   API.addEduReport(z)
       .then((output) => {
@@ -31,7 +32,25 @@ class EduInstHome extends Component {
       });
   };
 
-  updateEduHistory = (x) => {
+  viewCandidateEducationHistory = (x) => {
+    var z={
+      candidateID : x.candidateid
+    };
+    API.viewEdHistory(z)
+        .then((output) => {
+            console.log("OUTPUT: "+output);
+            this.setState({message:'View Candidate History'});
+
+            var temp=[];
+            for(var i=0;i<output.length;i++)
+            {
+            temp=this.state.candHistory.concat(output[i]);
+            this.setState({candHistory:temp});
+            }
+        });
+  };
+
+  updateEducationHistory = (x) => {
     var z={
       candidateID : x.candidateid,
       education_instituteID : this.props.user
@@ -73,13 +92,13 @@ class EduInstHome extends Component {
 
 
 
-          <h3>Add Education Recoed</h3>
+          <h3>Add Education Record</h3>
           <form>
           <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2">Institute ID:</div>
+          <div className="col-sm-2 col-md-2 col-lg-2">Institution Name:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
            <input type="text" ref="nm" onChange={(event)=>{
-                                        this.setState({instid: event.target.value});}} /></div>
+                                        this.setState({eduname: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
@@ -116,6 +135,22 @@ class EduInstHome extends Component {
                 </div>
                 </form>
 
+                {this.state.candHistory.map(f => {
+                       return ( <div  key={Math.random()}>
+                       <div >
+                       <ul className="w3-ul w3-border w3-right-blue">
+                              <li>{f.eduId}</li>
+                              <li>{f.EduLevel}</li>
+                              <li>{f.graduateDate}</li>
+                              <li>{f.grade}</li>
+                              <li>{f.eduName}</li>
+                              </ul>
+                                </div>
+                                </div>
+                              )
+            })
+            }
+
                 <h3>Modify Education History</h3>
                 <form>
                 <div className="form-group row">
@@ -137,10 +172,9 @@ class EduInstHome extends Component {
                                <ul className="w3-ul w3-border w3-right-blue">
                                       <li>{f.eduId}</li>
                                       <li>{f.EduLevel}</li>
-                                      <li>{f.skillSet}</li>
                                       <li>{f.graduateDate}</li>
                                       <li>{f.grade}</li>
-                                      <li>{f.edu}</li></ul>
+                                      <li>{f.eduName}</li></ul>
                                         </div>
                                         </div>
                                       )

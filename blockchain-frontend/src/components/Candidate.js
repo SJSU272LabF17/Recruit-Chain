@@ -26,12 +26,12 @@ API.newcandidate(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Candidate added.'});
-          ReactDOM.findDOMNode(this.refs.fn).value = "";
-          ReactDOM.findDOMNode(this.refs.ln).value = "";
-          ReactDOM.findDOMNode(this.refs.dob).value = "";
-          ReactDOM.findDOMNode(this.refs.em).value = "";
-          ReactDOM.findDOMNode(this.refs.prt).value = "";
-          ReactDOM.findDOMNode(this.refs.adr).value = "";
+          // ReactDOM.findDOMNode(this.refs.fn).value = "";
+          // ReactDOM.findDOMNode(this.refs.ln).value = "";
+          // ReactDOM.findDOMNode(this.refs.dob).value = "";
+          // ReactDOM.findDOMNode(this.refs.em).value = "";
+          // ReactDOM.findDOMNode(this.refs.prt).value = "";
+          // ReactDOM.findDOMNode(this.refs.adr).value = "";
       });
 APInode.newUser(u)
               .then((output) => {

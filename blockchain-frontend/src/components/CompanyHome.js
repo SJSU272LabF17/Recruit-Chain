@@ -16,14 +16,15 @@ class CompanyHome extends Component {
 addJobProfile = (x) => {
   var z={
   "$class": "org.acme.workvalid.JobProfile",
-  "jobId": x.candidateid+"."+x.companyid+Math.floor((Math.random()*20)),
+  "jobId": x.candidateid+"."+this.props.user+Math.floor((Math.random()*20)),
   "role": x.role,
   "skillSet": x.skills,
   "joiningDate": x.joining,
-  "leavingDate": "null",
+  "leavingDate": "N/A",
   "currEmployment": "Yes",
   "candidate": x.candidateid,
-  "company": x.companyid
+  "company": this.props.user,
+  "companyName": x.companyname
 };
 API.newjob(z)
     .then((output) => {
@@ -51,8 +52,6 @@ viewCandidateCompanyHistory = (x) => {
           this.setState({candHistory:temp});
           }
       });
-
-
 };
 
 updateCompanyHistory = (x) => {
@@ -147,7 +146,7 @@ updatedData=(d)=>{
                       <div className="col-sm-2 col-md-2 col-lg-2">Company:</div>
                        <div className="col-sm-10 col-md-10 col-lg-10">
                        <input type="text" ref="comp" onChange={(event)=>{
-                                                    this.setState({companyid: event.target.value});}} /></div>
+                                                    this.setState({companyname: event.target.value});}} /></div>
                       </div>
 
                       <div className="form-group row">
