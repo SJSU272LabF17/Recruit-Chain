@@ -4,6 +4,74 @@ const headers = {
     'Accept': 'application/json'
 };
 
+export const getWork = (payload) =>
+    fetch(`${api}/`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res => {
+        return res;
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+export const getLab = (payload) =>
+    fetch(`${api}/`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res => {
+        return res;
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+export const getCertificate = (payload) =>
+    fetch(`${api}/`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res => {
+        return res;
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+export const getPolice = (payload) =>
+    fetch(`${api}/`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res => {
+        return res;
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
 export const newcandidate = (payload) =>
     fetch(`${api}/Candidate`, {
         method: 'POST',
@@ -297,86 +365,106 @@ export const newjob = (payload) =>
                                                             return error;
                                                         });
 
-                                                        export const viewCandidateCompanyHistory = (payload) =>
-                                                            fetch(`${api}/queries/selectJobHistory`, {
-                                                                method: 'POST',
-                                                                headers: {
-                                                                    ...headers,
-                                                                    'Content-Type': 'application/json'
-                                                                },
-                                                                body: JSON.stringify(payload)
-                                                            }).then(res=>res.json())
-                                                            .then(res => {
-                                                                return res;
-                                                            })
-                                                                .catch(error => {
-                                                                    console.log("This is error");
-                                                                    return error;
-                                                                });
-                                                                export const viewCandidateCertificationHistory = (payload) =>
-                                                                    fetch(`${api}/queries/selectCertifications`, {
-                                                                        method: 'POST',
-                                                                        headers: {
-                                                                            ...headers,
-                                                                            'Content-Type': 'application/json'
-                                                                        },
-                                                                        body: JSON.stringify(payload)
-                                                                    }).then(res=>res.json())
-                                                                    .then(res => {
-                                                                        return res;
-                                                                    })
-                                                                        .catch(error => {
-                                                                            console.log("This is error");
-                                                                            return error;
-                                                                        });
+export const updateCompanyHistory = (payload) =>
+fetch('http://localhost:3000/api/queries/selectJobHistory?candidateID=resource%3Aorg.acme.workvalid.Candidate%23'+payload.candidateID+'&companyId=resource%3Aorg.acme.workvalid.Company%23'+payload.companyID, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+  }).then(res=>res.json())
+  .then(res => {
+    return res;
+  })
+  .catch(error => {
+    console.log("This is error");
+    return error;
+  });
 
-                                                                        export const viewCandidateEducationHistory = (payload) =>
-                                                                            fetch(`${api}/queries/selectEducational_Qualification`, {
-                                                                                method: 'POST',
-                                                                                headers: {
-                                                                                    ...headers,
-                                                                                    'Content-Type': 'application/json'
-                                                                                },
-                                                                                body: JSON.stringify(payload)
-                                                                            }).then(res=>res.json())
-                                                                            .then(res => {
-                                                                                return res;
-                                                                            })
-                                                                                .catch(error => {
-                                                                                    console.log("This is error");
-                                                                                    return error;
-                                                                                });
+  export const viewCandidateCertificationHistory = (payload) =>
+  fetch(`${api}/queries/selectCertifications`, {
+    method: 'POST',
+    headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res => {
+      return res;
+    })
+    .catch(error => {
+      console.log("This is error");
+      return error;
+    });
 
-                                                                                export const viewCandidatePoliceHistory = (payload) =>
-                                                                                    fetch(`${api}/queries/selectPoliceVerification`, {
-                                                                                        method: 'POST',
-                                                                                        headers: {
-                                                                                            ...headers,
-                                                                                            'Content-Type': 'application/json'
-                                                                                        },
-                                                                                        body: JSON.stringify(payload)
-                                                                                    }).then(res=>res.json())
-                                                                                    .then(res => {
-                                                                                        return res;
-                                                                                    })
-                                                                                        .catch(error => {
-                                                                                            console.log("This is error");
-                                                                                            return error;
-                                                                                        });
+export const viewCandidateEducationHistory = (payload) =>
+fetch(`${api}/queries/selectEducational_Qualification`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+    return res;
+  })
+  .catch(error => {
+    console.log("This is error");
+    return error;
+  });
 
-                                                                                        export const viewCandidateLabHistory = (payload) =>
-                                                                                            fetch(`${api}/queries/selectDrugTestReport`, {
-                                                                                                method: 'POST',
-                                                                                                headers: {
-                                                                                                    ...headers,
-                                                                                                    'Content-Type': 'application/json'
-                                                                                                },
-                                                                                                body: JSON.stringify(payload)
-                                                                                            }).then(res=>res.json())
-                                                                                            .then(res => {
-                                                                                                return res;
-                                                                                            })
-                                                                                                .catch(error => {
-                                                                                                    console.log("This is error");
-                                                                                                    return error;
-                                                                                                });
+export const viewCandidatePoliceHistory = (payload) =>
+fetch(`${api}/queries/selectPoliceVerification`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is error");
+  return error;
+});
+
+export const viewCandidateLabHistory = (payload) =>
+fetch(`${api}/queries/selectDrugTestReport`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is error");
+  return error;
+});
+
+
+
+export const updateCompanyHistory = (payload) =>
+fetch(`${api}/queries/selectDrugTestReport`, {
+  method: 'POST',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is error");
+  return error;
+});

@@ -12,22 +12,46 @@ class CandidateHome extends Component {
   };
 
 
+//http://localhost:3000/api/queries/selectJobHistory?candidateID=resource%3Aorg.acme.workvalid.Candidate%23+this.props.user
 
-addJobProfile = (x) => {
-  var z={
-  "$class": "org.acme.workvalid.JobProfile",
-  "jobId": x.candidateid+"."+x.companyid,
-  "role": x.role,
-  "skillSet": x.skills,
-  "joiningDate": x.joining,
-  "leavingDate": "null",
-  "currEmployment": "yes",
-  "candidate": x.candidateid,
-  "company": x.companyid
-};
-API.newjob(z)
+work = (x) => {
+  var z=
+API.getWork(z)
     .then((output) => {
         console.log("OUTPUT: "+output.CompanyName);
+        this.setState({message:'Comapny added.'});
+        ReactDOM.findDOMNode(this.refs.cn).value = "";
+        ReactDOM.findDOMNode(this.refs.cl).value = "";
+    });
+};
+
+lab = (x) => {
+  var z=
+API.getLab(z)
+    .then((output) => {
+        console.log("OUTPUT: "+output.CompanyName);
+        this.setState({message:'Comapny added.'});
+        ReactDOM.findDOMNode(this.refs.cn).value = "";
+        ReactDOM.findDOMNode(this.refs.cl).value = "";
+    });
+};
+
+certificate = (x) => {
+  var z=
+API.getCertificate(z)
+    .then((output) => {
+        console.log("OUTPUT: "+output.CompanyName);
+        this.setState({message:'Comapny added.'});
+        ReactDOM.findDOMNode(this.refs.cn).value = "";
+        ReactDOM.findDOMNode(this.refs.cl).value = "";
+    });
+};
+
+police = (x) => {
+  var z=
+API.getPolice(z)
+    .then((output) => {
+        console.log("OUTPUT: ");
         this.setState({message:'Comapny added.'});
         ReactDOM.findDOMNode(this.refs.cn).value = "";
         ReactDOM.findDOMNode(this.refs.cl).value = "";
@@ -44,7 +68,10 @@ API.newjob(z)
           <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
           </div>
           <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCandidate(this.state)}>Submit</button></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(this.state)}>work</button></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.lab(this.state)}>lab</button></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.certificate(this.state)}>certificate</button></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.police(this.state)}>police</button></div>
             </div>
             </form>
          </div>

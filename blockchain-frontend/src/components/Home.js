@@ -52,7 +52,7 @@ logout(){
   }
   render() {
     return (
-      <div style={{backgroundImage: "url(../public/homebg.jpg)"}}>
+      <div>
 
             <div className="btitle col-sm-12 col-md-12 col-lg-12">
             <h1 className="w3-text-white" style={{margin:"25px", fontWeight:"bold"}}>Employee Verification</h1>
