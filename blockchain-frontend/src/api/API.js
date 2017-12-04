@@ -298,7 +298,7 @@ export const newjob = (payload) =>
                                                         });
 
                                                         export const viewCandidateCompanyHistory = (payload) =>
-                                                            fetch(`${api}/`, {
+                                                            fetch(`${api}/queries/selectJobHistory`, {
                                                                 method: 'POST',
                                                                 headers: {
                                                                     ...headers,
@@ -313,9 +313,8 @@ export const newjob = (payload) =>
                                                                     console.log("This is error");
                                                                     return error;
                                                                 });
-
                                                                 export const viewCandidateCertificationHistory = (payload) =>
-                                                                    fetch(`${api}/`, {
+                                                                    fetch(`${api}/queries/selectCertifications`, {
                                                                         method: 'POST',
                                                                         headers: {
                                                                             ...headers,
@@ -332,7 +331,7 @@ export const newjob = (payload) =>
                                                                         });
 
                                                                         export const viewCandidateEducationHistory = (payload) =>
-                                                                            fetch(`${api}/`, {
+                                                                            fetch(`${api}/queries/selectEducational_Qualification`, {
                                                                                 method: 'POST',
                                                                                 headers: {
                                                                                     ...headers,
@@ -349,7 +348,7 @@ export const newjob = (payload) =>
                                                                                 });
 
                                                                                 export const viewCandidatePoliceHistory = (payload) =>
-                                                                                    fetch(`${api}/`, {
+                                                                                    fetch(`${api}/queries/selectPoliceVerification`, {
                                                                                         method: 'POST',
                                                                                         headers: {
                                                                                             ...headers,
@@ -364,8 +363,9 @@ export const newjob = (payload) =>
                                                                                             console.log("This is error");
                                                                                             return error;
                                                                                         });
+
                                                                                         export const viewCandidateLabHistory = (payload) =>
-                                                                                            fetch(`${api}/`, {
+                                                                                            fetch(`${api}/queries/selectDrugTestReport`, {
                                                                                                 method: 'POST',
                                                                                                 headers: {
                                                                                                     ...headers,

@@ -22,7 +22,7 @@ import '../styles.css';
 
 class Home extends Component {
 
-state={visible:false,visible1:false,usertype:'',isLogged:false}
+state={visible:false,visible1:false,usertype:'',isLogged:false,loggedUser:''}
 
 checkUser = (x) => {
   var u={username:x.username,password:x.password};
@@ -35,7 +35,7 @@ APInode.checkUser(u)
       }
       else {
         console.log("Success");
-        this.setState({isLogged:true, usertype:output.type});
+        this.setState({isLogged:true, usertype:output.type, loggedUser:output.username});
       }
     });
 };
@@ -77,11 +77,11 @@ APInode.checkUser(u)
 </div>
 </div>
 </form>):(this.state.usertype==="1" ?
-  (<CompanyHome />):((this.state.usertype==="2" ?
-    (<EduHome />):((this.state.usertype==="3" ?
-      (<TestlabHome />):((this.state.usertype==="4" ?
-        (<PolicedeptHome />):((this.state.usertype==="5" ?
-          (<CertificationHome />):((this.state.usertype==="6" ?
+  (<CompanyHome user={this.state.loggedUser}/>):((this.state.usertype==="2" ?
+    (<EduHome user={this.state.loggedUser}/>):((this.state.usertype==="3" ?
+      (<TestlabHome user={this.state.loggedUser}/>):((this.state.usertype==="4" ?
+        (<PolicedeptHome user={this.state.loggedUser}/>):((this.state.usertype==="5" ?
+          (<CertificationHome user={this.state.loggedUser}/>):((this.state.usertype==="6" ?
             (<CandidateHome />):(null))))))))))))): null}
 
 {this.state.visible1 ?
