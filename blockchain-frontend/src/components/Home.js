@@ -6,15 +6,13 @@ import Candidate from './Candidate';
 import Company from './Company';
 import EducationInst from './EducationInst';
 import Testlab from './Testlab';
-import Policedept from './Policedept';
-import Certification from './Certification';
+
 
 import CompanyHome from './CompanyHome';
 import CandidateHome from './CandidateHome';
 import TestlabHome from './TestlabHome';
 import EduHome from './EduInstHome';
-import PolicedeptHome from './PolicedeptHome';
-import CertificationHome from './CertificationHome';
+
 
 import * as APInode from '../api/APInode';
 import 'w3-css/w3.css';
@@ -96,10 +94,8 @@ logout(){
               ):(this.state.usertype==="1" ?
               (<CompanyHome user={this.state.loggedUser}/>):((this.state.usertype==="2" ?
               (<EduHome user={this.state.loggedUser}/>):((this.state.usertype==="3" ?
-              (<TestlabHome user={this.state.loggedUser}/>):((this.state.usertype==="4" ?
-              (<PolicedeptHome user={this.state.loggedUser}/>):((this.state.usertype==="5" ?
-              (<CertificationHome user={this.state.loggedUser}/>):((this.state.usertype==="6" ?
-              (<CandidateHome />):(null))))))))))))): null}
+              (<TestlabHome user={this.state.loggedUser}/>):((this.state.usertype==="6" ?
+              (<CandidateHome />):(null))))))))): null}
 
 {this.state.visible1 ?
 (
@@ -109,8 +105,6 @@ logout(){
   <div className="col-sm-1 col-md-1 col-lg-1"><Link to='/company' className="links">Company</Link></div>
   <div className="col-sm-2 col-md-2 col-lg-2"><Link to='/eduinstitute' className="links">Education Institute</Link></div>
   <div className="col-sm-1 col-md-1 col-lg-1"><Link to='/testlab' className="links">Test Lab</Link></div>
-  <div className="col-sm-1 col-md-1 col-lg-1">  <Link to='/policedept' className="links">Police Dept</Link></div>
-  <div className="col-sm-1 col-md-1 col-lg-1"><Link to='/certification' className="links">Certification</Link></div>
   <div className="col-sm-1 col-md-1 col-lg-1"><Link to='/candidate' className="links">Candidate</Link></div>
   <div className="col-sm-1 col-md-1 col-lg-1"></div>
     </div>
@@ -120,8 +114,6 @@ logout(){
   <Route exact path="/company" component={() => <Company/>}/>
   <Route exact path="/eduinstitute" component={() => <EducationInst/>}/>
   <Route exact path="/testlab" component={() => <Testlab/>}/>
-  <Route exact path="/policedept" component={() => <Policedept/>}/>
-  <Route exact path="/certification" component={() => <Certification/>}/>
   <Route exact path="/candidate" component={() => <Candidate/>}/>
   </Switch>
 </div>): null }
