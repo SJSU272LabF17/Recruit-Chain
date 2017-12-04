@@ -47,13 +47,16 @@ componentWillMount(){
 
     render() {
         return (
-          <div className="w3-container w3-panel">
-    <h3>Sign up - New Certificate Provider</h3>
+          <div className="w3-container w3-panel  w3-border box" style={{width: '38%'}}>
+          <div className="w3-panel w3-green">
+          <h3 style={{textAlign:'center'}}>SIGN UP - Certification</h3>
+          </div>
+
   <form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Provider:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="text" ref="pr" onChange={(event)=>{
+   <input type="text" className="w3-input" ref="pr" onChange={(event)=>{
                                 this.setState({provider: event.target.value});}} /></div>
   </div>
 
@@ -61,13 +64,13 @@ componentWillMount(){
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="password" ref="ln" onChange={(event)=>{
+   <input type="password" className="w3-input" ref="ln" onChange={(event)=>{
                                 this.setState({password: event.target.value});}} /></div>
   </div>
 
   <div className="form-group row">
   <div className="col-sm-4 col-md-4 col-lg-4">
-  <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addCertification(this.state)}>Submit</button>
+  <button type="button" className="w3-button w3-green w3-border w3-border-white w3-round-large" onClick={() => this.addCertification(this.state)}>Submit</button>
   </div>
   </div>
   </form>

@@ -57,44 +57,49 @@ logout(){
             <div className="btitle col-sm-12 col-md-12 col-lg-12">
             <h1 className="w3-text-white" style={{margin:"25px", fontWeight:"bold"}}>Employee Verification</h1>
             </div>
-            <br/><br/><br/><br/><br/>
-{this.state.isLogged===false ?
-            (<div>
-              <button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.showDiv1()}>SIGN IN</button>
-            <button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.showDiv2()}>SIGN UP</button></div>)
-            : <button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.logout()}>Logout</button>}
 
-{this.state.visible ?
-(this.state.isLogged===false ? (
-  <div className="w3-container w3-panel  w3-border box">
-  <div className="w3-panel w3-green">
-          <h3>SIGN IN</h3>
-          </div>
-  <form>
-<div className="form-group row">
-<div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
- <div className="col-sm-10 col-md-10 col-lg-10">
- <input type="text" ref="fn" onChange={(event)=>{
+            <br/><br/><br/><br/><br/><br/>
+
+            {this.state.isLogged===false ?
+            (<div>
+              <div className="col-sm-4 col-md-4 col-lg-4"></div>
+              <div className="col-sm-3 col-md-3 col-lg-3"><button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.showDiv1()}>SIGN IN</button></div>
+              <div className="col-sm-3 col-md-3 col-lg-3"><button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.showDiv2()}>SIGN UP</button></div>
+              </div>)
+            : <button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.logout()}>Logout</button>}
+            <br/><br/><br/><br/>
+            {this.state.visible ?
+              (this.state.isLogged===false ? (
+                <div className="w3-container w3-panel  w3-border box" style={{width: '38%'}}>
+                <div className="w3-panel w3-green">
+                <h3 style={{textAlign:'center'}}>SIGN IN</h3>
+                </div>
+
+                <form>
+                <div className="form-group row">
+                <div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
+                <div className="col-sm-8 col-md-8 col-lg-8">
+                <input type="text" ref="fn" className="w3-input" onChange={(event)=>{
                               this.setState({username: event.target.value});}} /></div></div>
-<div className="form-group row">
-<div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
- <div className="col-sm-10 col-md-10 col-lg-10">
- <input type="password" ref="ln" onChange={(event)=>{
+                <div className="form-group row">
+                <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
+                <div className="col-sm-8 col-md-8 col-lg-8">
+                <input type="password" ref="ln" className="w3-input" onChange={(event)=>{
                               this.setState({password: event.target.value});}} /></div></div>
-<div className="form-group row">
-<div className="col-sm-4 col-md-4 col-lg-4">
-<button type="button" className="w3-button w3-green" onClick={() => this.checkUser(this.state)}>Submit</button>
-</div>
-</div>
-</form>
-</div>
-):(this.state.usertype==="1" ?
-  (<CompanyHome user={this.state.loggedUser}/>):((this.state.usertype==="2" ?
-    (<EduHome user={this.state.loggedUser}/>):((this.state.usertype==="3" ?
-      (<TestlabHome user={this.state.loggedUser}/>):((this.state.usertype==="4" ?
-        (<PolicedeptHome user={this.state.loggedUser}/>):((this.state.usertype==="5" ?
-          (<CertificationHome user={this.state.loggedUser}/>):((this.state.usertype==="6" ?
-            (<CandidateHome />):(null))))))))))))): null}
+                <div className="form-group row">
+                <div className="col-sm-4 col-md-4 col-lg-4">
+                <button type="button" className="w3-button w3-green w3-border w3-border-white w3-round-large" onClick={() => this.checkUser(this.state)}>Submit</button>
+                </div>
+                </div>
+                </form>
+                </div>
+              ):(this.state.usertype==="1" ?
+              (<CompanyHome user={this.state.loggedUser}/>):((this.state.usertype==="2" ?
+              (<EduHome user={this.state.loggedUser}/>):((this.state.usertype==="3" ?
+              (<TestlabHome user={this.state.loggedUser}/>):((this.state.usertype==="4" ?
+              (<PolicedeptHome user={this.state.loggedUser}/>):((this.state.usertype==="5" ?
+              (<CertificationHome user={this.state.loggedUser}/>):((this.state.usertype==="6" ?
+              (<CandidateHome />):(null))))))))))))): null}
 
 {this.state.visible1 ?
 (
@@ -109,7 +114,7 @@ logout(){
   <div className="col-sm-1 col-md-1 col-lg-1"><Link to='/candidate' className="links">Candidate</Link></div>
   <div className="col-sm-1 col-md-1 col-lg-1"></div>
     </div>
-
+<br/><br/>
   <Switch>
   <Route exact path="/home" component={Home}/>
   <Route exact path="/company" component={() => <Company/>}/>
