@@ -37,7 +37,7 @@ rule CertificationProvider_Access {
     action: ALLOW
 }
 
-//Authorized PoliceVerification can have all access on the certificates created by them
+//PoliceVerification can have all access on the certificates created by them
 rule PoliceVerification_Access {
     description: "The PoliceVerification will have full access to the PoliceverificationReport created by them"
     participant(m): "org.acme.workvalid.PoliceVerification"
@@ -47,12 +47,22 @@ rule PoliceVerification_Access {
     action: ALLOW
 }
 
-//Authorized DrugTestCenter can have all access on the certificates created by them
+//DrugTestCenter can have all access on the certificates created by them
 rule DrugTestCenter_Access {
     description: "The DrugTestCenter will have full access to the DrugTestReport created by them"
     participant(m): "org.acme.workvalid.DrugTestCenter"
     operation: ALL
     resource(v): "org.acme.workvalid.DrugTestReport"
     condition:(v.dtc.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+//EduInstitution can have all access on the certificates created by them
+rule EduInstitution_Access {
+    description: "The EduInstitution will have full access to the EducationRecord created by them"
+    participant(m): "org.acme.workvalid.EduInstitution"
+    operation: ALL
+    resource(v): "org.acme.workvalid.EducationRecord"
+    condition:(v.edu.getIdentifier() == m.getIdentifier())
     action: ALLOW
 }
