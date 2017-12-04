@@ -365,6 +365,9 @@ export const newjob = (payload) =>
                                                             return error;
                                                         });
 
+
+
+
 export const updateCompanyHistory = (payload) =>
 fetch(`http://localhost:3000/api/queries/selectJobHistory?candidateID=resource%3Aorg.acme.workvalid.Candidate%23`+payload.candidateID+`&companyId=resource%3Aorg.acme.workvalid.Company%23`+payload.companyId, {
   method: 'GET',
@@ -524,3 +527,20 @@ fetch(`${api}/queries/viewPoliceReports?candidateID=resource%3Aorg.acme.workvali
   console.log("This is error");
   return error;
 });
+
+export const updateJobProfile = (payload) =>
+    fetch(`${api}/ChangeEmployment`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res => {
+        return res;
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
