@@ -18,6 +18,7 @@ name:'',location:'',candidateid:'',date:'',details:'',
   "pvName": x.name,
   "pvLocation": x.location
 };
+var u={username:x.name+"."+x.location, password: x.password, type:1}
   API.newdept(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
@@ -25,6 +26,10 @@ name:'',location:'',candidateid:'',date:'',details:'',
           ReactDOM.findDOMNode(this.refs.nm).value = "";
           ReactDOM.findDOMNode(this.refs.loc).value = "";
       });
+APInode.newUser(u)
+                    .then((output) => {
+                        console.log("OUTPUT: ");
+                    });
   };
 
   addRecord = (x) => {

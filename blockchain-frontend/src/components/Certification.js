@@ -18,13 +18,18 @@ class Certification extends Component {
   "certName": x.name,
   "certProvider": x.provider
 };
-  API.newcertificate(z)
+var u={username:x.provider+"."+x.name, password: x.password, type:1}
+API.newcertificate(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Certification added.'});
           ReactDOM.findDOMNode(this.refs.nm).value = "";
           ReactDOM.findDOMNode(this.refs.pr).value = "";
       });
+APInode.newUser(u)
+                    .then((output) => {
+                        console.log("OUTPUT: ");
+                    });
   };
 
   addCertificate = (x) => {
