@@ -1,6 +1,12 @@
-query selectTransactions {
-  description: "Select all transaction"
+
+//Query to select the Job History of the Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+Company : "resource:org.acme.workvalid.Company#companyId" */
+
+query selectJobHistory {
+  description: "To select the Job History of a candidate"
   statement:
       SELECT org.acme.workvalid.JobProfile
-      WHERE (candidate=="resource:org.acme.workvalid.Candidate#ritika.chadha" AND company=="resource:org.acme.workvalid.Company#Del")
+      WHERE (candidate== _$candidateID AND company== _$companyId)
 }
