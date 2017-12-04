@@ -26,3 +26,12 @@ rule Company_Candidates_OtherDetails_Access {
     resource: "org.acme.workvalid.**"
     action: ALLOW
 }
+
+//Authorized Certification Providers can have all access on the certificates created by them
+rule CertificationProvider_Access {
+    description: "The Certification Providers will have full access to the certificate access created by them"
+    participant(m): "org.acme.workvalid.Certification"
+    operation: ALL
+    resource(v): "org.acme.workvalid.Certificate"
+    action: ALLOW
+}
