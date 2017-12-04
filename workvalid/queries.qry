@@ -1,6 +1,61 @@
-query selectTransactions {
-  description: "Select all transaction"
+
+//Query to select the Job History of the Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+Company : "resource:org.acme.workvalid.Company#companyId" */
+
+query selectJobHistory {
+  description: "To select the Job History of a candidate"
   statement:
       SELECT org.acme.workvalid.JobProfile
-      WHERE (candidate=="resource:org.acme.workvalid.Candidate#ritika.chadha" AND company=="resource:org.acme.workvalid.Company#Del")
+      WHERE (candidate== _$candidateID AND company== _$companyId)
 }
+
+//Query to select the Educational History for a Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+edu : "resource:org.acme.workvalid.EduInstitution#Del" */
+
+query selectEducational_Qualification {
+  description: "TO select the Educational Background for a candidate"
+  statement:
+      SELECT org.acme.workvalid.EducationRecord
+      WHERE (candidate== _$candidateID AND edu== _$education_instituteID)
+}
+
+//Query to select the Authorized third party Certifications for a Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+Certification : "resource:org.acme.workvalid.Certification#certProviderId"*/
+
+query selectCertifications {
+  description: "To select details of the candidate's certification details"
+  statement:
+      SELECT org.acme.workvalid.Certificate
+      WHERE (candidate== _$candidateID AND certProvider== _$education_instituteID)
+}
+
+//Query to select the DrugTestDetails of a Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+DrugTestCenter : "resource:org.acme.workvalid.DrugTestCenter#dtcId"*/
+
+query selectDrugTestReport {
+  description: "To select details of the candidate's DrugTestReport details"
+  statement:
+      SELECT org.acme.workvalid.DrugTestReport
+      WHERE (candidate== _$candidateID AND dtc== _$dtcId)
+}
+
+//Query to select the Authorized third party Certifications for a Candidate
+/* The parameters from Web application that needs to be passed are for this query are:
+candidate : "resource:org.acme.workvalid.Candidate#candidateId"
+PoliceVerification : "resource:org.acme.workvalid.PoliceVerification#pvId"*/
+
+query selectPoliceVerification {
+  description: "To select details of the candidate's Police records"
+  statement:
+      SELECT org.acme.workvalid.PoliceverificationReport
+      WHERE (candidate== _$candidateID AND policeVer== _$pvId)
+}
+
