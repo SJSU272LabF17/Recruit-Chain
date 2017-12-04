@@ -13,7 +13,7 @@ class Testlab extends Component {
 
   addLab = (x) => {
     var z={
-  "$class": "org.acme.workvalidation.DrugTestCenter",
+  "$class": "org.acme.workvalid.DrugTestCenter",
   "dtcId": x.name+"."+x.location,
   "dtcName": x.name,
   "dtcLocation": x.location

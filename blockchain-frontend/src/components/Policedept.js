@@ -13,7 +13,7 @@ name:'',location:'',candidateid:'',date:'',details:'',
 
   addDept = (x) => {
     var z={
-  "$class": "org.acme.workvalidation.PoliceVerification",
+  "$class": "org.acme.workvalid.PoliceVerification",
   "pvId": x.name+"."+x.location,
   "pvName": x.name,
   "pvLocation": x.location

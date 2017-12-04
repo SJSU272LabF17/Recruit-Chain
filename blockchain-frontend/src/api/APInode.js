@@ -5,7 +5,7 @@ const headers = {
 };
 
 export const newUser = (payload) =>
-    fetch(`${api}/newuser`, {
+    fetch(`${api}/usersignup`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -22,7 +22,7 @@ export const newUser = (payload) =>
         });
 
 export const checkUser = (payload) =>
-    fetch(`${api}/checkuser`, {
+    fetch(`${api}/usersignup/login`, {
         method: 'POST',
         headers: {
             ...headers,

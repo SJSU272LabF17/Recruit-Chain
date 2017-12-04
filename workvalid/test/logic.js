@@ -13,7 +13,7 @@ const path = require('path');
 
 require('chai').should();
 
-const NS = 'org.acme.workvalidation';
+const NS = 'org.acme.workvalid';
 const assetType = 'SampleAsset';
 
 describe('#' + NS, () => {

@@ -33,19 +33,6 @@ API.newjob(z)
         ReactDOM.findDOMNode(this.refs.cl).value = "";
     });
 };
-/*
-componentWillMount(){
-  this.setState({companyname:'',companylocation:'',message:''});
- var list=[]
-  API.allcompanies()
-      .then((output) => {
-        for(var i=0;i<output.length;i++){
-          list.push(output[i].CompanyName);
-          console.log("OUTPUT: "+output[i].CompanyName);
-        }
-        this.setState({listall:list});
-      });
-}*/
 
     render() {
         return (

@@ -15,7 +15,7 @@ class Company extends Component {
 
 addCompany = (x) => {
   var z={
-  "$class": "org.acme.workvalidation.Company",
+  "$class": "org.acme.workvalid.Company",
   "companyId": x.name+"."+x.location,
   "companyName": x.name,
   "companyLocation": x.location
