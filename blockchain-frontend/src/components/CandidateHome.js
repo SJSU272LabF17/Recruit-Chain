@@ -7,56 +7,64 @@ class CandidateHome extends Component {
   state={
     name:'',location:'',id:'',
     message:'',username:'',password:'',
-    message1:'',
+    message1:'',flag:'',
     listall:[]
   };
 
-
-//http://localhost:3000/api/queries/selectJobHistory?candidateID=resource%3Aorg.acme.workvalid.Candidate%23+this.props.user
-
 work = (x) => {
-  var z=
-API.getWork(z)
+  var z={
+    candidateID:this.props.user
+  }
+API.viewJobHistory(z)
     .then((output) => {
-        console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
+        console.log("OUTPUT: "+output);
+        var temp=[];
+        listall:[];
+        this.setState({flag:1});
+        for(var i=0;i<output.length;i++)
+        {
+        temp=this.state.listall.concat(output[i]);
+        this.setState({listall:temp});
+        }
     });
 };
 
 lab = (x) => {
-  var z=
-API.getLab(z)
+  var z={
+    candidateID:this.props.user
+  }
+API.viewDrugTestReports(z)
     .then((output) => {
-        console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
+        console.log("OUTPUT: "+output);
+        var temp=[];
+        listall:[];
+        this.setState({flag:2});
+        for(var i=0;i<output.length;i++)
+        {
+        temp=this.state.listall.concat(output[i]);
+        this.setState({listall:temp});
+        }
     });
 };
 
-certificate = (x) => {
-  var z=
-API.getCertificate(z)
+edu = (x) => {
+  var z={5
+    candidateID:this.props.user
+  }
+API.viewEdHistory(z)
     .then((output) => {
-        console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
+        console.log("OUTPUT: "+output);
+        var temp=[];
+        listall:[];
+        this.setState({flag:3});
+        for(var i=0;i<output.length;i++)
+        {
+        temp=this.state.listall.concat(output[i]);
+        this.setState({listall:temp});
+        }
     });
 };
 
-police = (x) => {
-  var z=
-API.getPolice(z)
-    .then((output) => {
-        console.log("OUTPUT: ");
-        this.setState({message:'Comapny added.'});
-        ReactDOM.findDOMNode(this.refs.cn).value = "";
-        ReactDOM.findDOMNode(this.refs.cl).value = "";
-    });
-};
 
     render() {
         return (
@@ -68,13 +76,57 @@ API.getPolice(z)
           <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
           </div>
           <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(this.state)}>work</button></div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.lab(this.state)}>lab</button></div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.certificate(this.state)}>certificate</button></div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.police(this.state)}>police</button></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(1)}>work</button></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.lab(2)}>lab</button></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.edu(3)}>edu</button></div>
+
             </div>
             </form>
          </div>
+         {this.state.flag===1 ? (
+           {this.state.listall.map(f => {
+                         return ( <div  key={Math.random()}>
+                         <div >
+                         <ul className="w3-ul w3-border w3-right-blue">
+                                <li>{f.jobId}</li>
+                                <li>{f.role}</li>
+                                <li>{f.skillSet}</li>
+                                <li>{f.joiningDate}</li>
+                                <li>{f.leavingDate}</li>
+                                <li>{f.currEmployment}</li></ul>
+                                  </div>
+                                  </div>
+                                )})
+              }): (this.state.flag===2 ?
+                (
+                  {this.state.listall.map(f => {
+                                return ( <div  key={Math.random()}>
+                                <div >
+                                <ul className="w3-ul w3-border w3-right-blue">
+                                       <li>{f.dtrId}</li>
+                                       <li>{f.dtrDate}</li>
+                                       <li>{f.dtrType}</li>
+                                       <li>{f.dtrResult}</li>
+                                       <li>{f.dtc}</li></ul>
+                                         </div>
+                                         </div>
+                                       )})
+                     }): (this.state.flag===3 ?
+                  (
+                    {this.state.listall.map(f => {
+                                  return ( <div  key={Math.random()}>
+                                  <div >
+                                  <ul className="w3-ul w3-border w3-right-blue">
+                                         <li>{f.eduId}</li>
+                                         <li>{f.institutionId}</li>
+                                         <li>{f.EduLevel}</li>
+                                         <li>{f.graduateDate}</li>
+                                         <li>{f.grade}</li>
+                                           </div>
+                                           </div>
+                                         )})
+                       }): (null)))}
+
         );
     }
 }

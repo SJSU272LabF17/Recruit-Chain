@@ -8,7 +8,7 @@ class CompanyHome extends Component {
     name:'',location:'',id:'',
     message:'',username:'',password:'',newleaving:'',
     message1:'',newprofileid:'',newemployeed:'',showForm:false,
-    allHistory:[]
+    allHistory:[], candHistory:[]
   };
 
 
@@ -29,7 +29,7 @@ addJobProfile = (x) => {
 API.newjob(z)
     .then((output) => {
         console.log("OUTPUT: "+output.CompanyName);
-        this.setState({message:'Comapny added.'});
+        this.setState({message:'Company added.'});
         // ReactDOM.findDOMNode(this.refs.cn).value = "";
         // ReactDOM.findDOMNode(this.refs.cl).value = "";
     });
@@ -37,15 +37,20 @@ API.newjob(z)
 
 viewCandidateCompanyHistory = (x) => {
   var z={
-    candidateID : 'resource:org.acme.workvalid.Candidate#'+x.candidateid,
-    companyId : 'resource:org.acme.workvalid.Company#'+this.props.user
+    candidateID : x.candidateid
   };
-  API.updateCompanyHistory(z)
+  API.viewJobHistory(z)
       .then((output) => {
           console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'View Candidate History'});
           // ReactDOM.findDOMNode(this.refs.cn).value = "";
           // ReactDOM.findDOMNode(this.refs.cl).value = "";
+          var temp=[];
+          for(var i=0;i<output.length;i++)
+          {
+          temp=this.state.candHistory.concat(output[i]);
+          this.setState({candHistory:temp});
+          }
       });
 
 
@@ -191,6 +196,22 @@ componentWillMount(){
   <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.viewCandidateCompanyHistory(this.state)}>Submit</button></div>
     </div>
     </form>
+
+    {this.state.candHistory.map(f => {
+           return ( <div  key={Math.random()}>
+           <div >
+           <ul className="w3-ul w3-border w3-right-blue">
+                  <li>{f.jobId}</li>
+                  <li>{f.role}</li>
+                  <li>{f.skillSet}</li>
+                  <li>{f.joiningDate}</li>
+                  <li>{f.leavingDate}</li>
+                  <li>{f.currEmployment}</li></ul>
+                    </div>
+                    </div>
+                  )
+})
+}
 
 
     <h3>Modify Candidate History</h3>
