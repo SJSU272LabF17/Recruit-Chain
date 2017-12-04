@@ -21,7 +21,7 @@ addJobProfile = (x) => {
   "skillSet": x.skills,
   "joiningDate": x.joining,
   "leavingDate": "null",
-  "currEmployment": "yes",
+  "currEmployment": "Yes",
   "candidate": x.candidateid,
   "company": x.companyid
 };
@@ -212,6 +212,7 @@ componentWillMount(){
                     <li>{f.role}</li>
                     <li>{f.skillSet}</li>
                     <li>{f.joiningDate}</li>
+                    <li>{f.leavingDate}</li>
                     <li>{f.currEmployment}</li></ul>
                       </div>
                       </div>
