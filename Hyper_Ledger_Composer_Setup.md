@@ -46,12 +46,12 @@ but modified some part of the code.
 
 using command line :
 
-composer participant add -c admin@workvalid -d '{"$class":"org.acme.workvalidation.EduInstitution","institutionId":"sjsu@workvalid.org","institutionName":"San Jose State University","institutionLocation":"San Jose"}'
+composer participant add -c admin@workvalid -d '{"$class":"org.acme.workvalid.EduInstitution","institutionId":"sjsu@workvalid.org","institutionName":"San Jose State University","institutionLocation":"San Jose"}'
 
 
 13. TO issue a new identity to the added participant(https://hyperledger.github.io/composer/managing/identity-issue.html)
 command line
-composer identity issue -c admin@workvalid -f sjsuid.card -u sjsuid -a "org.acme.workvalidation.EduInstitution#sjsu@workvalid.org" --issuer true
+composer identity issue -c admin@workvalid -f sjsuid.card -u sjsuid -a "org.acme.workvalid.EduInstitution#sjsu@workvalid.org" --issuer true
 
 This command worked:
 composer identity issue -u tcsid1 -a org.acme.biznet.Employer#TCS -c admin@hr-network
