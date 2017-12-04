@@ -1,0 +1,9 @@
+//Candidate Will Have only the READ Access for all the assets belongs to this particular candidate
+rule CandidateAccess {
+    description: "Candidate can only view the details of his details in the blockchain"
+    participant(m): "org.acme.workvalid.Candidate"
+    operation: READ
+    resource(v): "org.acme.workvalid.**"
+    condition: (v.candidate.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
