@@ -21,7 +21,7 @@ class Candidate extends Component {
   "passportNumber": x.passport,
   "dob": x.dob
 };
-var u={username:x.fname+"."+x.lname, password: x.password, type:1}
+var u={username:x.fname+"."+x.lname, password: x.password, type:6}
 API.newcandidate(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);

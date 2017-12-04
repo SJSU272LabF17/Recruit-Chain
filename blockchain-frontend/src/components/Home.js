@@ -22,7 +22,7 @@ import '../styles.css';
 
 class Home extends Component {
 
-state={visible:false,visible1:false,usertype:'',isLogged:true}
+state={visible:false,visible1:false,usertype:'',isLogged:false}
 
 checkUser = (x) => {
   var u={username:x.username,password:x.password};
@@ -49,7 +49,7 @@ APInode.checkUser(u)
   }
   render() {
     return (
-      <div>
+      <div style={{backgroundImage: "url(../public/homebg.jpg)"}}>
 
             <div className="btitle col-sm-12 col-md-12 col-lg-12">
             <h1 className="w3-text-white" style={{margin:"25px", fontWeight:"bold"}}>Employee Verification</h1>
@@ -60,7 +60,7 @@ APInode.checkUser(u)
             <button onClick={() => this.showDiv2()}>SIGN UP</button>
 
 {this.state.visible ?
-(this.state.isLogged ? (<form>
+(this.state.isLogged===false ? (<form>
 <div className="form-group row">
 <div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
  <div className="col-sm-10 col-md-10 col-lg-10">
@@ -76,12 +76,12 @@ APInode.checkUser(u)
 <button type="button" className="w3-button w3-dark-grey" onClick={() => this.checkUser(this.state)}>Submit</button>
 </div>
 </div>
-</form>):(this.state.usertype===1 ?
-  (<CompanyHome />):((this.state.usertype===2 ?
-    (<EduHome />):((this.state.usertype===3 ?
-      (<TestlabHome />):((this.state.usertype===4 ?
-        (<PolicedeptHome />):((this.state.usertype===5 ?
-          (<CertificationHome />):((this.state.usertype===6 ?
+</form>):(this.state.usertype==="1" ?
+  (<CompanyHome />):((this.state.usertype==="2" ?
+    (<EduHome />):((this.state.usertype==="3" ?
+      (<TestlabHome />):((this.state.usertype==="4" ?
+        (<PolicedeptHome />):((this.state.usertype==="5" ?
+          (<CertificationHome />):((this.state.usertype==="6" ?
             (<CandidateHome />):(null))))))))))))): null}
 
 {this.state.visible1 ?

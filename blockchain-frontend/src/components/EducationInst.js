@@ -18,7 +18,7 @@ class EducationInst extends Component {
   "institutionName": x.name,
   "institutionLocation": x.location
 };
-var u={username:x.name+"."+x.location, password: x.password, type:1}
+var u={username:x.name+"."+x.location, password: x.password, type:2};
 API.newedu(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);

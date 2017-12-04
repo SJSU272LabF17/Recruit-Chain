@@ -18,7 +18,7 @@ class Certification extends Component {
   "certName": x.name,
   "certProvider": x.provider
 };
-var u={username:x.provider+"."+x.name, password: x.password, type:1}
+var u={username:x.provider+"."+x.name, password: x.password, type:5}
 API.newcertificate(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);

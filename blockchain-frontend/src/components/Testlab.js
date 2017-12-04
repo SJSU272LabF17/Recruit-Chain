@@ -18,7 +18,7 @@ class Testlab extends Component {
   "dtcName": x.name,
   "dtcLocation": x.location
 };
-var u={username:x.name+"."+x.location, password: x.password, type:1}
+var u={username:x.name+"."+x.location, password: x.password, type:3}
   API.newlab(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
@@ -29,7 +29,7 @@ var u={username:x.name+"."+x.location, password: x.password, type:1}
       APInode.newUser(u)
                           .then((output) => {
                               console.log("OUTPUT: ");
-                          });      
+                          });
   };
 
 
