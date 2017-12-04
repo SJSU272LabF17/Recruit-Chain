@@ -36,8 +36,8 @@ API.newjob(z)
 
 viewCandidateEducationHistory = (x) => {
   var z={
-    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid;
-    education_instituteID : "resource:org.acme.workvalid.EduInstitution#"+this.props.user;
+    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid,
+    education_instituteID : "resource:org.acme.workvalid.EduInstitution#"+this.props.user
   };
 
   API.viewCandidateEducationHistory(z)

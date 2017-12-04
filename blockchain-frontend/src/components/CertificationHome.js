@@ -36,8 +36,8 @@ API.newjob(z)
 
 viewCandidateCertificationHistory = (x) => {
   var z={
-    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid;
-    education_instituteID : "resource:org.acme.workvalid.Certification#"+this.props.user;
+    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid,
+    education_instituteID : "resource:org.acme.workvalid.Certification#"+this.props.user
   };
 
   API.viewCandidateCertificationHistory(z)

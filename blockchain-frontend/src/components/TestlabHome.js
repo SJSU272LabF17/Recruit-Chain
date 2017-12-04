@@ -36,8 +36,8 @@ API.newjob(z)
 
 viewCandidateLabHistory = (x) => {
   var z={
-    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid;
-    dtcId : "resource:org.acme.workvalid.DrugTestCenter#"+this.props.user;
+    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid,
+    dtcId : "resource:org.acme.workvalid.DrugTestCenter#"+this.props.user
   };
 
   API.viewCandidateLabHistory(z)

@@ -36,8 +36,8 @@ API.newjob(z)
 
 viewCandidatePoliceHistory = (x) => {
   var z={
-    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid;
-    pvId : "resource:org.acme.workvalid.PoliceVerification#"+this.props.user;
+    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid,
+    pvId : "resource:org.acme.workvalid.PoliceVerification#"+this.props.user
   };
 
   API.viewCandidatePoliceHistory(z)

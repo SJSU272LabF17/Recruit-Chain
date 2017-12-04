@@ -88,21 +88,12 @@ logout(){
 </div>
 </form>
 </div>
-<<<<<<< HEAD
 ):(this.state.usertype==="1" ?
-  (<CompanyHome />):((this.state.usertype==="2" ?
-    (<EduHome />):((this.state.usertype==="3" ?
-      (<TestlabHome />):((this.state.usertype==="4" ?
-        (<PolicedeptHome />):((this.state.usertype==="5" ?
-          (<CertificationHome />):((this.state.usertype==="6" ?
-=======
-</form>):(this.state.usertype==="1" ?
   (<CompanyHome user={this.state.loggedUser}/>):((this.state.usertype==="2" ?
     (<EduHome user={this.state.loggedUser}/>):((this.state.usertype==="3" ?
       (<TestlabHome user={this.state.loggedUser}/>):((this.state.usertype==="4" ?
         (<PolicedeptHome user={this.state.loggedUser}/>):((this.state.usertype==="5" ?
           (<CertificationHome user={this.state.loggedUser}/>):((this.state.usertype==="6" ?
->>>>>>> ed4f7702af55d0b2427779115ac0a5754158a32b
             (<CandidateHome />):(null))))))))))))): null}
 
 {this.state.visible1 ?

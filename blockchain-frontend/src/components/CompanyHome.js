@@ -37,8 +37,8 @@ API.newjob(z)
 
 viewCandidateCompanyHistory = (x) => {
   var z={
-    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid;
-    companyId : "resource:org.acme.workvalid.Company#"+this.props.user;
+    candidateID : "resource:org.acme.workvalid.Candidate#"+x.candidateid,
+    companyId : "resource:org.acme.workvalid.Company#"+this.props.user
   };
 
   API.viewCandidateCompanyHistory(z)
