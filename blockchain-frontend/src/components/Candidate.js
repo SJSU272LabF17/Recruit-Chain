@@ -26,12 +26,13 @@ API.newcandidate(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Candidate added.'});
-          // ReactDOM.findDOMNode(this.refs.fn).value = "";
-          // ReactDOM.findDOMNode(this.refs.ln).value = "";
-          // ReactDOM.findDOMNode(this.refs.dob).value = "";
-          // ReactDOM.findDOMNode(this.refs.em).value = "";
-          // ReactDOM.findDOMNode(this.refs.prt).value = "";
-          // ReactDOM.findDOMNode(this.refs.adr).value = "";
+          ReactDOM.findDOMNode(this.refs.fn).value = "";
+          ReactDOM.findDOMNode(this.refs.ln).value = "";
+          ReactDOM.findDOMNode(this.refs.dob).value = "";
+          ReactDOM.findDOMNode(this.refs.em).value = "";
+          ReactDOM.findDOMNode(this.refs.prt).value = "";
+          ReactDOM.findDOMNode(this.refs.adr).value = "";
+          ReactDOM.findDOMNode(this.refs.pass).value = "";
       });
 APInode.newUser(u)
               .then((output) => {
@@ -107,7 +108,7 @@ componentWillMount(){
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="password" className="w3-input" ref="ln" onChange={(event)=>{
+   <input type="password" className="w3-input" ref="pass" onChange={(event)=>{
                                 this.setState({password: event.target.value});}} /></div>
   </div>
 

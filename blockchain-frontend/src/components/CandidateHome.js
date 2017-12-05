@@ -17,9 +17,9 @@ work = (x) => {
   }
 API.viewJobHistory(z)
     .then((output) => {
+        ReactDOM.findDOMNode(this.refs.candi1).value = "";
         console.log("OUTPUT: "+output);
         var temp=[];
-        //listall:[];
         this.setState({flag1:true,flag2:false,flag3:false});
         for(var i=0;i<output.length;i++)
         {
@@ -35,6 +35,7 @@ lab = (x) => {
   }
 API.viewDrugTestReports(z)
     .then((output) => {
+        ReactDOM.findDOMNode(this.refs.candi1).value = "";
         console.log("OUTPUT: "+output);
         var temp=[];
         //listall:[];
@@ -53,6 +54,7 @@ edu = (x) => {
   }
 API.viewEdHistory(z)
     .then((output) => {
+        ReactDOM.findDOMNode(this.refs.candi1).value = "";
         console.log("OUTPUT: "+output);
         var temp=[];
         //listall:[];
@@ -73,7 +75,7 @@ API.viewEdHistory(z)
           <form>
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="candi1" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
           </div>
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(1)}>work</button></div>

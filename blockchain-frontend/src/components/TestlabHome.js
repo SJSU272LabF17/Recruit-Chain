@@ -28,8 +28,10 @@ class TestlabHome extends Component {
         .then((output) => {
             //console.log("OUTPUT: "+output.CompanyName);
             this.setState({message1:'Report added.'});
-            // ReactDOM.findDOMNode(this.refs.nm).value = "";
-            // ReactDOM.findDOMNode(this.refs.loc).value = "";
+            ReactDOM.findDOMNode(this.refs.ref1).value = "";
+            ReactDOM.findDOMNode(this.refs.ref2).value = "";
+            ReactDOM.findDOMNode(this.refs.ref3).value = "";
+            ReactDOM.findDOMNode(this.refs.ref4).value = "";
         });
     };
 
@@ -41,6 +43,7 @@ class TestlabHome extends Component {
       API.updateLabHistory(z)
           .then((output) => {
               console.log("OUTPUT: ");
+              ReactDOM.findDOMNode(this.refs.ref6).value = "";
               this.setState({message:'View Candidate History'});
 
               var temp=[];
@@ -62,8 +65,7 @@ class TestlabHome extends Component {
           .then((output) => {
               console.log("OUTPUT: "+output);
               this.setState({message:'View Candidate History'});
-              // ReactDOM.findDOMNode(this.refs.cn).value = "";
-              // ReactDOM.findDOMNode(this.refs.cl).value = "";
+              ReactDOM.findDOMNode(this.refs.ref5).value = "";
               var temp=[];
               for(var i=0;i<output.length;i++)
               {
@@ -86,8 +88,9 @@ class TestlabHome extends Component {
           .then((output) => {
               console.log("OUTPUT: ");
               this.setState({message:'View Candidate History'});
-              // ReactDOM.findDOMNode(this.refs.cn).value = "";
-              // ReactDOM.findDOMNode(this.refs.cl).value = "";
+              ReactDOM.findDOMNode(this.refs.ref7).value = "";
+              ReactDOM.findDOMNode(this.refs.ref8).value = "";
+              ReactDOM.findDOMNode(this.refs.ref9).value = "";
           });
     };
 
@@ -99,28 +102,28 @@ class TestlabHome extends Component {
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Date:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="nm" onChange={(event)=>{
+           <input type="text" ref="ref1" onChange={(event)=>{
                                         this.setState({date: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Type:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="loc" onChange={(event)=>{
+           <input type="text" ref="ref2" onChange={(event)=>{
                                         this.setState({type: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Candidate ID:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="loc" onChange={(event)=>{
+           <input type="text" ref="ref3" onChange={(event)=>{
                                         this.setState({candidateid: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Lab Name:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="loc" onChange={(event)=>{
+           <input type="text" ref="ref4" onChange={(event)=>{
                                         this.setState({labname: event.target.value});}} /></div>
           </div>
 
@@ -138,7 +141,7 @@ class TestlabHome extends Component {
             <form>
             <div className="form-group row">
             <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-            <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+            <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref5" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
           </div>
           <div className="form-group row">
             <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.viewCandidateLabHistory(this.state)}>Submit</button></div>
@@ -165,7 +168,7 @@ class TestlabHome extends Component {
          <form>
          <div className="form-group row">
          <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-         <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+         <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref6" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
        </div>
        <div className="form-group row">
          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updateLabHistory(this.state)}>Submit</button></div>
@@ -194,13 +197,13 @@ class TestlabHome extends Component {
              <form>
              <div className="form-group row">
              <div className="col-sm-2 col-md-2 col-lg-2">Record ID:</div>
-             <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({rid: event.target.value});}} /></div>
+             <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref7" onChange={(event)=>{this.setState({rid: event.target.value});}} /></div>
            </div>
              <div className="col-sm-2 col-md-2 col-lg-2">Results:</div>
-           <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newresult: event.target.value});}} /></div>
+           <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref8" onChange={(event)=>{this.setState({newresult: event.target.value});}} /></div>
 
              <div className="col-sm-2 col-md-2 col-lg-2">Date:</div>
-           <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newdate: event.target.value});}} /></div>
+           <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref9" onChange={(event)=>{this.setState({newdate: event.target.value});}} /></div>
 
            <div className="form-group row">
              <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updatedData(this.state)}>Submit</button></div>

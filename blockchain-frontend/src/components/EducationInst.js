@@ -23,8 +23,9 @@ API.newedu(z)
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Edu institute added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.loc).value = "";
+          ReactDOM.findDOMNode(this.refs.ref1).value = "";
+          ReactDOM.findDOMNode(this.refs.ref2).value = "";
+          ReactDOM.findDOMNode(this.refs.ref3).value = "";
       });
 APInode.newUser(u)
               .then((output) => {
@@ -46,21 +47,21 @@ APInode.newUser(u)
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Name:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="text" className="w3-input" ref="nm" onChange={(event)=>{
+   <input type="text" className="w3-input" ref="ref1" onChange={(event)=>{
                                 this.setState({name: event.target.value});}} /></div>
   </div>
 
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Location:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="text" className="w3-input" ref="loc" onChange={(event)=>{
+   <input type="text" className="w3-input" ref="ref2" onChange={(event)=>{
                                 this.setState({location: event.target.value});}} /></div>
   </div>
 
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
    <div className="col-sm-10 col-md-10 col-lg-10">
-   <input type="password" className="w3-input" ref="ln" onChange={(event)=>{
+   <input type="password" className="w3-input" ref="ref3" onChange={(event)=>{
                                 this.setState({password: event.target.value});}} /></div>
   </div>
 

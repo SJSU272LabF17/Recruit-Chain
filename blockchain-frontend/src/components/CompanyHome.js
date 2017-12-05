@@ -30,8 +30,11 @@ API.newjob(z)
     .then((output) => {
         console.log("OUTPUT: "+output.CompanyName);
         this.setState({message:'Company added.'});
-        // ReactDOM.findDOMNode(this.refs.cn).value = "";
-        // ReactDOM.findDOMNode(this.refs.cl).value = "";
+        ReactDOM.findDOMNode(this.refs.ref1).value = "";
+        ReactDOM.findDOMNode(this.refs.ref2).value = "";
+        ReactDOM.findDOMNode(this.refs.ref3).value = "";
+        ReactDOM.findDOMNode(this.refs.ref4).value = "";
+        ReactDOM.findDOMNode(this.refs.ref5).value = "";
     });
 };
 
@@ -43,8 +46,7 @@ viewCandidateCompanyHistory = (x) => {
       .then((output) => {
           console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'View Candidate History'});
-          // ReactDOM.findDOMNode(this.refs.cn).value = "";
-          // ReactDOM.findDOMNode(this.refs.cl).value = "";
+          ReactDOM.findDOMNode(this.refs.ref6).value = "";
           var temp=[];
           for(var i=0;i<output.length;i++)
           {
@@ -63,8 +65,7 @@ updateCompanyHistory = (x) => {
       .then((output) => {
           console.log("OUTPUT: "+output[0].jobId);
           this.setState({message:'View Candidate History'});
-          // ReactDOM.findDOMNode(this.refs.cn).value = "";
-          // ReactDOM.findDOMNode(this.refs.cl).value = "";
+          ReactDOM.findDOMNode(this.refs.ref7).value = "";
           var temp=[];
           this.state.showForm=true;
           for(var i=0;i<output.length;i++)
@@ -91,8 +92,9 @@ updatedData=(d)=>{
       .then((output) => {
           console.log("OUTPUT: ");
           this.setState({message:'View Candidate History'});
-          // ReactDOM.findDOMNode(this.refs.cn).value = "";
-          // ReactDOM.findDOMNode(this.refs.cl).value = "";
+          ReactDOM.findDOMNode(this.refs.ref8).value = "";
+          ReactDOM.findDOMNode(this.refs.ref9).value = "";
+          ReactDOM.findDOMNode(this.refs.ref10).value = "";
       });
 };
 
@@ -117,35 +119,35 @@ updatedData=(d)=>{
                       <div className="form-group row">
                       <div className="col-sm-2 col-md-2 col-lg-2">Role:</div>
                        <div className="col-sm-10 col-md-10 col-lg-10">
-                       <input type="text" ref="role" onChange={(event)=>{
+                       <input type="text" ref="ref1" onChange={(event)=>{
                                                     this.setState({role: event.target.value});}} /></div>
                       </div>
 
                       <div className="form-group row">
                       <div className="col-sm-2 col-md-2 col-lg-2">Skills:</div>
                        <div className="col-sm-10 col-md-10 col-lg-10">
-                       <input type="text" ref="sk" onChange={(event)=>{
+                       <input type="text" ref="ref2" onChange={(event)=>{
                                                     this.setState({skills: event.target.value});}} /></div>
                       </div>
 
                       <div className="form-group row">
                       <div className="col-sm-2 col-md-2 col-lg-2">Joining Date:</div>
                        <div className="col-sm-10 col-md-10 col-lg-10">
-                       <input type="text" ref="join" onChange={(event)=>{
+                       <input type="text" ref="ref3" onChange={(event)=>{
                                                     this.setState({joining: event.target.value});}} /></div>
                       </div>
 
                       <div className="form-group row">
                       <div className="col-sm-2 col-md-2 col-lg-2">Candidate:</div>
                        <div className="col-sm-10 col-md-10 col-lg-10">
-                       <input type="text" ref="can" onChange={(event)=>{
+                       <input type="text" ref="ref4" onChange={(event)=>{
                                                     this.setState({candidateid: event.target.value});}} /></div>
                       </div>
 
                       <div className="form-group row">
                       <div className="col-sm-2 col-md-2 col-lg-2">Company:</div>
                        <div className="col-sm-10 col-md-10 col-lg-10">
-                       <input type="text" ref="comp" onChange={(event)=>{
+                       <input type="text" ref="ref5" onChange={(event)=>{
                                                     this.setState({companyname: event.target.value});}} /></div>
                       </div>
 
@@ -172,7 +174,7 @@ updatedData=(d)=>{
   <form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref6" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
 </div>
 <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.viewCandidateCompanyHistory(this.state)}>Submit</button></div>
@@ -200,7 +202,7 @@ updatedData=(d)=>{
     <form>
     <div className="form-group row">
     <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-    <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+    <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref7" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
   </div>
   <div className="form-group row">
     <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updateCompanyHistory(this.state)}>Submit</button></div>
@@ -228,13 +230,13 @@ updatedData=(d)=>{
   <form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Job ID:</div>
-  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newprofileid: event.target.value});}} /></div>
+  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref8" onChange={(event)=>{this.setState({newprofileid: event.target.value});}} /></div>
 </div>
   <div className="col-sm-2 col-md-2 col-lg-2">Employeed Status:</div>
-<div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newemployeed: event.target.value});}} /></div>
+<div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref9" onChange={(event)=>{this.setState({newemployeed: event.target.value});}} /></div>
 
   <div className="col-sm-2 col-md-2 col-lg-2">Leaving Date:</div>
-<div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newleaving: event.target.value});}} /></div>
+<div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref10" onChange={(event)=>{this.setState({newleaving: event.target.value});}} /></div>
 
 <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updatedData(this.state)}>Submit</button></div>

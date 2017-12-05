@@ -25,6 +25,8 @@ state={visible:false,visible1:false,usertype:'',isLogged:false,loggedUser:''}
 checkUser = (x) => {
   var u={username:x.username,password:x.password};
   this.setState({isLogged:true});
+  ReactDOM.findDOMNode(this.refs.ref1).value = "";
+  ReactDOM.findDOMNode(this.refs.ref2).value = "";
 APInode.checkUser(u)
     .then((output) => {
       if(output.status=="False"){
@@ -34,6 +36,7 @@ APInode.checkUser(u)
       else {
         console.log("Success");
         this.setState({isLogged:true, usertype:output.type, loggedUser:output.username});
+
       }
     });
 };
@@ -77,12 +80,12 @@ logout(){
                 <div className="form-group row">
                 <div className="col-sm-2 col-md-2 col-lg-2">Username:</div>
                 <div className="col-sm-8 col-md-8 col-lg-8">
-                <input type="text" ref="fn" className="w3-input" onChange={(event)=>{
+                <input type="text" ref="ref1" className="w3-input" onChange={(event)=>{
                               this.setState({username: event.target.value});}} /></div></div>
                 <div className="form-group row">
                 <div className="col-sm-2 col-md-2 col-lg-2">Password:</div>
                 <div className="col-sm-8 col-md-8 col-lg-8">
-                <input type="password" ref="ln" className="w3-input" onChange={(event)=>{
+                <input type="password" ref="ref2" className="w3-input" onChange={(event)=>{
                               this.setState({password: event.target.value});}} /></div></div>
                 <div className="form-group row">
                 <div className="col-sm-4 col-md-4 col-lg-4">

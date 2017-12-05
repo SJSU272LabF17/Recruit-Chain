@@ -27,8 +27,9 @@ class EduInstHome extends Component {
       .then((output) => {
           //console.log("OUTPUT: "+output.CompanyName);
           this.setState({message:'Edu record added.'});
-          ReactDOM.findDOMNode(this.refs.nm).value = "";
-          ReactDOM.findDOMNode(this.refs.loc).value = "";
+          ReactDOM.findDOMNode(this.refs.ref1).value = "";
+          ReactDOM.findDOMNode(this.refs.ref2).value = "";
+          ReactDOM.findDOMNode(this.refs.ref3).value = "";
       });
   };
 
@@ -39,6 +40,7 @@ class EduInstHome extends Component {
     API.viewEdHistory(z)
         .then((output) => {
             console.log("OUTPUT: "+output);
+            ReactDOM.findDOMNode(this.refs.ref4).value = "";
             this.setState({message:'View Candidate History'});
 
             var temp=[];
@@ -58,7 +60,7 @@ class EduInstHome extends Component {
     API.updateEducationHistory(z)
         .then((output) => {
             this.setState({message:'View Candidate History'});
-
+            ReactDOM.findDOMNode(this.refs.ref5).value = "";
             var temp=[];
             this.state.showForm=true;
             for(var i=0;i<output.length;i++)
@@ -82,6 +84,9 @@ class EduInstHome extends Component {
         .then((output) => {
             console.log("SUCCESS: ");
             //this.setState({message:'View Candidate History'});
+            ReactDOM.findDOMNode(this.refs.ref6).value = "";
+            ReactDOM.findDOMNode(this.refs.ref7).value = "";
+            ReactDOM.findDOMNode(this.refs.ref8).value = "";
 
         });
   };
@@ -97,21 +102,21 @@ class EduInstHome extends Component {
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Institution Name:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="nm" onChange={(event)=>{
+           <input type="text" ref="ref1" onChange={(event)=>{
                                         this.setState({eduname: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Education Level:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="loc" onChange={(event)=>{
+           <input type="text" ref="ref2" onChange={(event)=>{
                                         this.setState({level: event.target.value});}} /></div>
           </div>
 
           <div className="form-group row">
           <div className="col-sm-2 col-md-2 col-lg-2">Candidate ID:</div>
            <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="loc" onChange={(event)=>{
+           <input type="text" ref="ref3" onChange={(event)=>{
                                         this.setState({candidateid: event.target.value});}} /></div>
           </div>
 
@@ -128,7 +133,7 @@ class EduInstHome extends Component {
               <form>
               <div className="form-group row">
               <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-              <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+              <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref4" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
           </div>
           <div className="form-group row">
               <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.viewCandidateEducationHistory(this.state)}>Submit</button></div>
@@ -155,7 +160,7 @@ class EduInstHome extends Component {
                 <form>
                 <div className="form-group row">
                 <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-                <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
+                <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref5" onChange={(event)=>{this.setState({candidateid: event.target.value});}} /></div>
               </div>
               <div className="form-group row">
                 <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updateEducationHistory(this.state)}>Submit</button></div>
@@ -186,13 +191,13 @@ class EduInstHome extends Component {
                     <form>
                     <div className="form-group row">
                     <div className="col-sm-2 col-md-2 col-lg-2">Record ID:</div>
-                    <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({eduid: event.target.value});}} /></div>
+                    <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref6" onChange={(event)=>{this.setState({eduid: event.target.value});}} /></div>
                   </div>
                     <div className="col-sm-2 col-md-2 col-lg-2">Graduation Date:</div>
-                  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({gradDate: event.target.value});}} /></div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref7" onChange={(event)=>{this.setState({gradDate: event.target.value});}} /></div>
 
                     <div className="col-sm-2 col-md-2 col-lg-2">Grade:</div>
-                  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({grade: event.target.value});}} /></div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref8" onChange={(event)=>{this.setState({grade: event.target.value});}} /></div>
 
                   <div className="form-group row">
                     <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updatedData(this.state)}>Submit</button></div>
