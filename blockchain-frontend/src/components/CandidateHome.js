@@ -17,7 +17,7 @@ work = (x) => {
   }
 API.viewJobHistory(z)
     .then((output) => {
-        ReactDOM.findDOMNode(this.refs.candi1).value = "";
+        //ReactDOM.findDOMNode(this.refs.candi1).value = "";
         console.log("OUTPUT: "+output);
         var temp=[];
         this.setState({flag1:true,flag2:false,flag3:false});
@@ -71,34 +71,33 @@ API.viewEdHistory(z)
     render() {
         return (
           <div className="w3-container w3-panel">
-          <h3>View Candidate History</h3>
-          <form>
+
+          <center><h3>View Candidate History</h3></center>
+<div className="col-sm-12 col-md-12 col-lg-12"><br/></div>
           <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2">Enter Candidate ID:</div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="candi1" onChange={(event)=>{this.setState({id: event.target.value});}} /></div>
+          <div className="col-sm-2 col-md-2 col-lg-2"></div>
+          <div className="col-sm-3 col-md-3 col-lg-3"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(1)}>Work History</button></div>
+          <div className="col-sm-3 col-md-3 col-lg-3"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.lab(2)}>Lab Reports</button></div>
+          <div className="col-sm-3 col-md-3 col-lg-3"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.edu(3)}>Education Records</button></div>
           </div>
-          <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.work(1)}>work</button></div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.lab(2)}>lab</button></div>
-          <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.edu(3)}>edu</button></div>
-
-            </div>
-            </form>
-
-
 
 {
 this.state.flag1 ?
     (this.state.listall.map(f => {
                   return ( <div  key={Math.random()}>
                   <div >
+                  <br />
+                  <br />
                   <div className="col-sm-12 col-md-12 col-lg-12">
-                  <div className="col-sm-2 col-md-2 col-lg-2">Role</div>
-                  <div className="col-sm-2 col-md-2 col-lg-2"></div>
-                  <div className="col-sm-2 col-md-2 col-lg-2"></div>
-                  <div className="col-sm-2 col-md-2 col-lg-2"></div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><b>Role</b></div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><b>Skills</b></div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><b>Joining Date</b></div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><b>Leaving Date</b></div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><b>Employement</b></div>
+                  <div className="col-sm-2 col-md-2 col-lg-2"><b>Company</b></div>
                   </div >
                   <div className="col-sm-12 col-md-12 col-lg-12">
+                  <br />
                          <div className="col-sm-2 col-md-2 col-lg-2">{f.role}</div>
                          <div className="col-sm-2 col-md-2 col-lg-2">{f.skillSet}</div>
                          <div className="col-sm-2 col-md-2 col-lg-2">{f.joiningDate}</div>
@@ -111,21 +110,42 @@ this.state.flag1 ?
                                (this.state.listall.map(f => {
                                              return ( <div  key={Math.random()}>
                                              <div >
-                                             {f.dtrId}
-                                             {f.dtrDate}
-                                             {f.dtrType}
-                                             {f.dtrResult}
-                                                     </div>
+                                             <br />
+                                             <br />
+                                             <div className="col-sm-12 col-md-12 col-lg-12">
+                                             <div className="col-sm-2 col-md-2 col-lg-2"><b>Test ID</b></div>
+                                             <div className="col-sm-2 col-md-2 col-lg-2"><b>Test Date</b></div>
+                                             <div className="col-sm-2 col-md-2 col-lg-2"><b>Test Type</b></div>
+                                             <div className="col-sm-2 col-md-2 col-lg-2"><b>Results</b></div>
+                                             </div >
+                                             <div className="col-sm-12 col-md-12 col-lg-12">
+                                             <br />
+
+                                             <div className="col-sm-2 col-md-2 col-lg-2">{f.dtrId}</div>
+                                            <div className="col-sm-2 col-md-2 col-lg-2">{f.dtrDate}</div>
+                                             <div className="col-sm-2 col-md-2 col-lg-2">{f.dtrType}</div>
+                                             <div className="col-sm-2 col-md-2 col-lg-2">{f.dtrResult}</div>
+                                                     </div></div>
                                                       </div>)})) : (this.state.flag3 ?
                                                           (this.state.listall.map(f => {
                                                                         return ( <div  key={Math.random()}>
                                                                         <div >
-                                                                        {f.eduId}
-                                                                        {f.institutionId}
-                                                                        {f.EduLevel}
-                                                                        {f.graduateDate}
-                                                                        {f.grade}
-                                                                                </div>
+                                                                        <br />
+                                                                        <br />
+                                                                        <div className="col-sm-12 col-md-12 col-lg-12">
+                                                                        <div className="col-sm-2 col-md-2 col-lg-2"><b>Record ID</b></div>
+                                                                        <div className="col-sm-2 col-md-2 col-lg-2"><b>Education Level</b></div>
+                                                                        <div className="col-sm-2 col-md-2 col-lg-2"><b>Graduate Date</b></div>
+                                                                        <div className="col-sm-2 col-md-2 col-lg-2"><b>Grade</b></div>
+                                                                        </div >
+                                                                        <div className="col-sm-12 col-md-12 col-lg-12">
+                                                                        <br />
+                                                                        <div className="col-sm-2 col-md-2 col-lg-2">{f.eduId}</div>
+
+                                                                        <div className="col-sm-2 col-md-2 col-lg-2">{f.EduLevel}</div>
+                                                                        <div className="col-sm-2 col-md-2 col-lg-2">{f.graduateDate}</div>
+                                                                        <div className="col-sm-2 col-md-2 col-lg-2">{f.grade}</div>
+                                                                                </div></div>
                                                                                  </div>)})) : (null)))
                          }
                       </div>

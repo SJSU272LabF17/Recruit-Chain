@@ -59,7 +59,7 @@ logout(){
             <h1 className="w3-text-white" style={{margin:"25px", fontWeight:"bold"}}>Employee Verification</h1>
             </div>
 
-            <br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/>
 
             {this.state.isLogged===false ?
             (<div>
@@ -67,12 +67,12 @@ logout(){
               <div className="col-sm-3 col-md-3 col-lg-3"><button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.showDiv1()}>SIGN IN</button></div>
               <div className="col-sm-3 col-md-3 col-lg-3"><button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.showDiv2()}>SIGN UP</button></div>
               </div>)
-            : <button className="w3-button w3-white w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.logout()}>Logout</button>}
+            : (<div><div className="col-sm-11 col-md-11 col-lg-11"></div><button className="w3-button w3-green w3-right-align w3-border w3-border-green w3-round-large w3-padding-large" onClick={() => this.logout()}>Logout</button></div>)}
             <br/><br/><br/><br/>
             {this.state.visible ?
               (this.state.isLogged===false ? (
                 <div className="w3-container w3-panel  w3-border box" style={{width: '38%'}}>
-                <div className="w3-panel w3-green">
+                <div className="w3-panel w3-blue">
                 <h3 style={{textAlign:'center'}}>SIGN IN</h3>
                 </div>
 
@@ -89,7 +89,7 @@ logout(){
                               this.setState({password: event.target.value});}} /></div></div>
                 <div className="form-group row">
                 <div className="col-sm-4 col-md-4 col-lg-4">
-                <button type="button" className="w3-button w3-green w3-border w3-border-white w3-round-large" onClick={() => this.checkUser(this.state)}>Submit</button>
+                <button type="button" className="w3-button w3-blue w3-border w3-border-white w3-round-large" onClick={() => this.checkUser(this.state)}>Submit</button>
                 </div>
                 </div>
                 </form>

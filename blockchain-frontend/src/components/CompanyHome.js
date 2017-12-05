@@ -30,11 +30,11 @@ API.newjob(z)
     .then((output) => {
         console.log("OUTPUT: "+output.CompanyName);
         this.setState({message:'Company added.'});
-        ReactDOM.findDOMNode(this.refs.ref1).value = "";
+        /*ReactDOM.findDOMNode(this.refs.ref1).value = "";
         ReactDOM.findDOMNode(this.refs.ref2).value = "";
         ReactDOM.findDOMNode(this.refs.ref3).value = "";
         ReactDOM.findDOMNode(this.refs.ref4).value = "";
-        ReactDOM.findDOMNode(this.refs.ref5).value = "";
+        ReactDOM.findDOMNode(this.refs.ref5).value = "";*/
     });
 };
 
@@ -168,7 +168,8 @@ updatedData=(d)=>{
 
 
 
-
+<div class="container">
+<div class="col col-lg-6">
 <br/>
   <h3>View Candidate History</h3>
   <form>
@@ -185,19 +186,19 @@ updatedData=(d)=>{
            return ( <div  key={Math.random()}>
            <div >
            <ul className="w3-ul w3-border w3-right-blue">
-                  <li>{f.jobId}</li>
-                  <li>{f.role}</li>
-                  <li>{f.skillSet}</li>
-                  <li>{f.joiningDate}</li>
-                  <li>{f.leavingDate}</li>
-                  <li>{f.currEmployment}</li></ul>
+                  <li>JOB ID: {f.jobId}</li>
+                  <li>ROLE: {f.role}</li>
+                  <li>SKILLS: {f.skillSet}</li>
+                  <li>JOIN DATE: {f.joiningDate}</li>
+                  <li>LEAVEING DATE: {f.leavingDate}</li>
+                  <li>EMPLOYMENT: {f.currEmployment}</li></ul>
                     </div>
                     </div>
                   )
 })
 }
-
-
+</div>
+<div class="col col-lg-6">
     <h3>Modify Candidate History</h3>
     <form>
     <div className="form-group row">
@@ -213,35 +214,39 @@ updatedData=(d)=>{
              return ( <div  key={Math.random()}>
              <div >
              <ul className="w3-ul w3-border w3-right-blue">
-                    <li>{f.jobId}</li>
-                    <li>{f.role}</li>
-                    <li>{f.skillSet}</li>
-                    <li>{f.joiningDate}</li>
-                    <li>{f.leavingDate}</li>
-                    <li>{f.currEmployment}</li></ul>
+                    <li>JOB ID: {f.jobId}</li>
+                    <li>ROLE: {f.role}</li>
+                    <li>SKILLS: {f.skillSet}</li>
+                    <li>JOIN DATE: {f.joiningDate}</li>
+                    <li>LEAVEING DATE: {f.leavingDate}</li>
+                    <li>EMPLOYMENT: {f.currEmployment}</li></ul>
                       </div>
                       </div>
                     )
   })
   }
 </div>
+</div>
+</div>
 {this.state.showForm ? (
   <div>
-  <form>
+<form>
   <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Job ID:</div>
-  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref8" onChange={(event)=>{this.setState({newprofileid: event.target.value});}} /></div>
+  <div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newprofileid: event.target.value});}} /></div>
 </div>
+<div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Employeed Status:</div>
-<div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref9" onChange={(event)=>{this.setState({newemployeed: event.target.value});}} /></div>
-
+<div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newemployeed: event.target.value});}} /></div>
+</div>
+<div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2">Leaving Date:</div>
-<div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="ref10" onChange={(event)=>{this.setState({newleaving: event.target.value});}} /></div>
-
+<div className="col-sm-2 col-md-2 col-lg-2"><input type="text" ref="id" onChange={(event)=>{this.setState({newleaving: event.target.value});}} /></div>
+</div>
 <div className="form-group row">
   <div className="col-sm-2 col-md-2 col-lg-2"><button type="button" className="w3-button w3-dark-grey" onClick={() => this.updatedData(this.state)}>Submit</button></div>
-    </div>
-    </form>
+</div>
+</form>
   </div>
 ) : (null)}
 

@@ -58,7 +58,7 @@ componentWillMount(){
         return (
           <div className="w3-container w3-panel  w3-border box" style={{width: '43%'}}>
 
-          <div className="w3-panel w3-green">
+          <div className="w3-panel w3-blue">
           <h3 style={{textAlign:'center'}}>SIGN UP - Candidate</h3>
           </div>
 
@@ -114,7 +114,7 @@ componentWillMount(){
 
   <div className="form-group row">
   <div className="col-sm-4 col-md-4 col-lg-4">
-  <button type="button" className="w3-button w3-green w3-border w3-border-white w3-round-large" onClick={() => this.addCandidate(this.state)}>Submit</button>
+  <button type="button" className="w3-button w3-blue w3-border w3-border-white w3-round-large" onClick={() => this.addCandidate(this.state)}>Submit</button>
   </div>
   </div>
   </form>

@@ -97,43 +97,60 @@ class TestlabHome extends Component {
     render() {
         return (
           <div className="w3-container w3-panel">
-          <h3>Add Report</h3>
-          <form>
-          <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2">Date:</div>
-           <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="ref1" onChange={(event)=>{
-                                        this.setState({date: event.target.value});}} /></div>
-          </div>
+          <button type="button" style={{color:"#F78536",background:"white"}} className="btn btn-primary" data-toggle="modal" data-target="#newModal">Add Report</button>
 
-          <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2">Type:</div>
-           <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="ref2" onChange={(event)=>{
-                                        this.setState({type: event.target.value});}} /></div>
-          </div>
 
-          <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2">Candidate ID:</div>
-           <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="ref3" onChange={(event)=>{
-                                        this.setState({candidateid: event.target.value});}} /></div>
-          </div>
+          <div className="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                      <div className="modal-header">
+                          <button type="button" ref="closeLogin" className="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div className="modal-body">
+                      <h3>Add Report</h3>
+                      <form>
+                      <div className="form-group row">
+                      <div className="col-sm-2 col-md-2 col-lg-2">Date:</div>
+                       <div className="col-sm-10 col-md-10 col-lg-10">
+                       <input type="text" ref="ref1" onChange={(event)=>{
+                                                    this.setState({date: event.target.value});}} /></div>
+                      </div>
 
-          <div className="form-group row">
-          <div className="col-sm-2 col-md-2 col-lg-2">Lab Name:</div>
-           <div className="col-sm-10 col-md-10 col-lg-10">
-           <input type="text" ref="ref4" onChange={(event)=>{
-                                        this.setState({labname: event.target.value});}} /></div>
-          </div>
+                      <div className="form-group row">
+                      <div className="col-sm-2 col-md-2 col-lg-2">Type:</div>
+                       <div className="col-sm-10 col-md-10 col-lg-10">
+                       <input type="text" ref="ref2" onChange={(event)=>{
+                                                    this.setState({type: event.target.value});}} /></div>
+                      </div>
 
-          <div className="form-group row">
-          <div className="col-sm-4 col-md-4 col-lg-4">
-          <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addReport(this.state)}>Submit</button>
+                      <div className="form-group row">
+                      <div className="col-sm-2 col-md-2 col-lg-2">Candidate ID:</div>
+                       <div className="col-sm-10 col-md-10 col-lg-10">
+                       <input type="text" ref="ref3" onChange={(event)=>{
+                                                    this.setState({candidateid: event.target.value});}} /></div>
+                      </div>
+
+                      <div className="form-group row">
+                      <div className="col-sm-2 col-md-2 col-lg-2">Lab Name:</div>
+                       <div className="col-sm-10 col-md-10 col-lg-10">
+                       <input type="text" ref="ref4" onChange={(event)=>{
+                                                    this.setState({labname: event.target.value});}} /></div>
+                      </div>
+
+                      <div className="form-group row">
+                      <div className="col-sm-4 col-md-4 col-lg-4">
+                      <button type="button" className="w3-button w3-dark-grey" onClick={() => this.addReport(this.state)}>Submit</button>
+                      </div>
+                      </div>
+                      </form>
+                      <font color="red">{this.state.message1}</font>
+
+                      </div>
+                  </div>
+              </div>
           </div>
-          </div>
-          </form>
-          <font color="red">{this.state.message1}</font>
 
 
           <br/>

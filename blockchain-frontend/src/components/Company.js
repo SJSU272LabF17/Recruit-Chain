@@ -39,7 +39,7 @@ APInode.newUser(u)
     render() {
         return (
           <div className="w3-container w3-panel  w3-border box" style={{width: '38%'}}>
-          <div className="w3-panel w3-green">
+          <div className="w3-panel w3-blue">
           <h3 style={{textAlign:'center'}}>SIGN UP - Company</h3>
           </div>
   <form>
@@ -66,7 +66,7 @@ APInode.newUser(u)
 
   <div className="form-group row">
   <div className="col-sm-4 col-md-4 col-lg-4">
-  <button type="button" className="w3-button w3-green w3-border w3-border-white w3-round-large" onClick={() => this.addCompany(this.state)}>Submit</button>
+  <button type="button" className="w3-button w3-blue w3-border w3-border-white w3-round-large" onClick={() => this.addCompany(this.state)}>Submit</button>
   </div>
   </div>
   </form>
