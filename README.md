@@ -18,6 +18,8 @@ Simplification of recruitment process by eliminating third party agencies to val
 * Docker
 * Amazon Web Services (AWS)
 
+### Project Link : <AWS PUBLIC DNS NAME>
+
 ### Methodology 
 
 We are using open source platform hyperledger composer for creating blockchain business network.
@@ -28,7 +30,7 @@ Docker image of the application will be created and application will be hosted o
 
 ### Contributors
 
-* Akhil 
-* Anjana 
-* Ritika
-* Shantagouda
+* Akhil Bhavirisetty
+* Anjana Pradeep
+* Ritika Chadha
+* Shantagouda Kuntoji
