@@ -4,6 +4,10 @@
 
 Simplification of recruitment process by eliminating third party agencies to validate the work history of the potential / future employees. We are going to leverage the blockchain technology to implement this idea. In existing world, employers are spending a lot of money for third party agencies to perform the background checks of the potential candidates. It takes more time for the BGC to complete, hence delaying the hiring process. Using the above proposed solution, we can save the lot of time and money of the employers and quickens the recruitment process.
 
+### Introduction Video
+
+YouTube Link : https://www.youtube.com/watch?v=C8aSBlHPHrU
+
 ### Architecture Diagram
 
 <img width="905" alt="arch digram 272" src="https://user-images.githubusercontent.com/20282380/33812058-bb3cab26-ddce-11e7-9bff-8d047d6c5bad.png">
@@ -18,7 +22,11 @@ Simplification of recruitment process by eliminating third party agencies to val
 * Docker
 * Amazon Web Services (AWS)
 
-### Project Link : <AWS PUBLIC DNS NAME>
+### Project Link 
+
+Blockchain Server : ec2-54-153-99-130.us-west-1.compute.amazonaws.com:3000
+
+Application Server : ec2-54-153-89-146.us-west-1.compute.amazonaws.com:3000
 
 ### Methodology 
 
