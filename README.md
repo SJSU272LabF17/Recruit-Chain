@@ -30,7 +30,7 @@ Blockchain technology, with its immutable blocks has made it easier to validate 
 * Docker
 * Amazon Web Services (AWS)
 
-### Project Link 
+### Project Links 
 
 Blockchain Server : ec2-54-153-99-130.us-west-1.compute.amazonaws.com:3000
 
