@@ -32,9 +32,14 @@ Blockchain technology, with its immutable blocks has made it easier to validate 
 
 ### Project Links 
 
-Blockchain Server : ec2-54-153-99-130.us-west-1.compute.amazonaws.com:3000
+Blockchain Server : http://ec2-54-153-99-130.us-west-1.compute.amazonaws.com:3000
 
-Application Server : ec2-54-153-89-146.us-west-1.compute.amazonaws.com:3000
+Application Server : http://ec2-54-153-89-146.us-west-1.compute.amazonaws.com:3000
+
+### Project Report
+
+Project Report : https://github.com/SJSU272LabF17/Recruit-Chain/blob/master/CMPE272-ProjectReport.pdf
+
 
 ### Methodology 
 
